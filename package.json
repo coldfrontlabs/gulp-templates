@@ -1,0 +1,42 @@
+{
+  "name": "gulp-templates",
+  "version": "1.0.0",
+  "description": "Templates for quick gulp task set-up.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx eslint --ext .js .",
+    "lint:fix": "npx eslint --ext .js . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coldfrontlabs/gulp-templates.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Coldfront Labs Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coldfrontlabs/gulp-templates/issues"
+  },
+  "homepage": "https://github.com/coldfrontlabs/gulp-templates#readme",
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "autoprefixer": "^9.4.9",
+    "cssnano": "^4.1.10",
+    "eslint": "^5.15.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-stylelint": "^8.0.0",
+    "gulp-uglify-es": "^1.0.4",
+    "postcss": "^7.0.14",
+    "postcss-discard-comments": "^4.0.2",
+    "stylelint": "^9.10.1"
+  }
+}
