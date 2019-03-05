@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint --ext .js .",
-    "lint:fix": "npx eslint --ext .js . --fix"
+    "lint:fix": "npx eslint --ext .js . --fix",
+    "commit": "npx git cz"
   },
   "repository": {
     "type": "git",
@@ -38,5 +39,14 @@
     "postcss": "^7.0.14",
     "postcss-discard-comments": "^4.0.2",
     "stylelint": "^9.10.1"
+  },
+  "devDependencies": {
+    "commitizen": "^3.0.7",
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
