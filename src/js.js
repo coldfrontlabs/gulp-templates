@@ -18,11 +18,15 @@ const js = {
    * @returns {Object} - Gulp stream.
    */
   lint: (source, fix = false) => {
-    return src(source, { base: './' })
+    const stream = src(source, { base: './' })
       .pipe(eslint({ fix: fix }))
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
-      .pipe(dest('.'))
+
+    // Only pipe out to destination if fix is enabled.
+    if (fix) stream.pipe(dest('.'))
+
+    return stream
   },
   /**
    * Runs babel on a provided source and outputs the result.
