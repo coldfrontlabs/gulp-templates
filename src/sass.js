@@ -8,7 +8,7 @@ const stylelint = require('gulp-stylelint')
 // Declare base functions.
 const sass = {
   /**
-   * Runs sass-lint on a provided source.
+   * Runs stylelint on a provided source.
    *
    * @param   {(String | String[])} source        - The source path(s).
    * @param   {Boolean}             [fix = false] - Toggle the fix option for stylelint.
@@ -16,12 +16,16 @@ const sass = {
    * @returns {Object} - Gulp stream.
    */
   lint: (source, fix = false) => {
-    return src(source, { base: './' })
+    const stream = src(source, { base: './' })
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }],
         fix: fix
       }))
-      .pipe(dest('.'))
+
+    // Only pipe out to destination if fix is enabled.
+    if (fix) stream.pipe(dest('.'))
+
+    return stream
   },
   /**
    * Runs sass and on a provided source and outputs the result.
