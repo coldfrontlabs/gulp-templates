@@ -14,3 +14,5 @@ const lib = {
       .pipe(dest(destination))
   }
 }
+
+module.exports = lib
