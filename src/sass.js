@@ -23,31 +23,31 @@ const sass = {
   /**
    * Runs stylelint:fix on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source               - The source path(s).
-   * @param   {String | Null}       [destination = null] - The destination path.
+   * @param   {(String | String[])} source              - The source path(s).
+   * @param   {String}              [destination = '.'] - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  fix: (source, destination = null) => {
-    return src(destination ? source : [source, { base: './' }])
+  fix: (source, destination = '.') => {
+    return src(source, { base: './' })
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }],
         fix: true
       }))
-      .pipe(dest(destination || '.'))
+      .pipe(dest(destination))
   },
   /**
    * Runs sass and on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source               - The source path(s).
-   * @param   {String | Null}       [destination = null] - The destination path.
+   * @param   {(String | String[])} source              - The source path(s).
+   * @param   {String}              [destination = '.'] - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  compile: (source, destination = null) => {
-    return src(destination ? source : [source, { base: './' }])
+  compile: (source, destination = '.') => {
+    return src(source, { base: './' })
       .pipe(gulpSass().on('error', gulpSass.logError))
-      .pipe(dest(destination || '.'));
+      .pipe(dest(destination));
   }
 }
 
