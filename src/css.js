@@ -14,55 +14,63 @@ const css = {
   /**
    * Runs stylelint on a provided source.
    *
-   * @param   {(String | String[])} source        - The source path(s).
-   * @param   {Boolean}             [fix = false] - Toggle the fix option for stylelint.
+   * @param   {(String | String[])} source - The source path(s).
    *
    * @returns {Object} - Gulp stream.
    */
-  lint: (source, fix = false) => {
-    const stream = src(source, { base: './' })
+  lint: (source) => {
+    return src(source)
+      .pipe(stylelint({
+        reporters: [{ formatter: 'verbose', console: true }]
+      }))
+  },
+  /**
+   * Runs stylelint:fix on a provided source and outputs the result.
+   *
+   * @param   {(String | String[])} source               - The source path(s).
+   * @param   {String | Null}       [destination = null] - The destination path.
+   *
+   * @returns {Object} - Gulp stream.
+   */
+  fix: (source, destination = null) => {
+    return src(destination ? source : [source, { base: './' }])
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }],
-        fix: fix
+        fix: true
       }))
-
-    // Only pipe out to destination if fix is enabled.
-    if (fix) stream.pipe(dest('.'))
-
-    return stream
+      .pipe(dest(destination || '.'))
   },
   /**
    * Runs postcss/autoprefixer on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source      - The source path(s).
-   * @param   {String}              destination - The destination path.
+   * @param   {(String | String[])} source               - The source path(s).
+   * @param   {String | Null}       [destination = null] - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  compile: (source, destination) => {
-    return src(source)
+  compile: (source, destination = null) => {
+    return src(destination ? source : [source, { base: './' }])
       .pipe(postcss([autoprefixer()]))
-      .pipe(dest(destination))
+      .pipe(dest(destination || '.'))
   },
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source                             - The source path(s).
-   * @param   {String}              destination                        - The destination path.
-   * @param   {Object}              [options = { extname: '.min.js' }] - The renaming options.
+   * @param   {(String | String[])} source               - The source path(s).
+   * @param   {String | Null}       [destination = null] - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  minify: (source, destination, options = { extname: '.min.css' }) => {
-    return src(source)
+  minify: (source, destination = null) => {
+    return src(destination ? source : [source, { base: './' }])
       .pipe(postcss(
         [
           cssnano(),
           comments()
         ]
       ))
-      .pipe(rename(options))
-      .pipe(dest(destination));
+      .pipe(rename({ extname: '.min.css' }))
+      .pipe(dest(destination || '.'));
   }
 }
 
