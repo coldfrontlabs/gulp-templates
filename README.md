@@ -45,7 +45,7 @@ lintScripts.description = 'Lints all JS files in the src/js/ directory.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.lint(paths.scripts.src, true)
+const lintScriptsFix = () => js.fix(paths.scripts.src)
 lintScriptsFix.description = 'Lints and fixes all JS files in the src/js/ directory.'
 
 /**
@@ -121,7 +121,7 @@ lint.description = 'Lints all JS files in the src/js/ directory.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintFix = () => js.lint(paths.scripts.src, true)
+export const lintFix = () => js.fix(paths.scripts.src)
 lintFix.description = 'Lints and fixes all JS files in the src/js/ directory.'
 
 /**
