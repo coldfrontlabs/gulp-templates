@@ -60,8 +60,8 @@ const js = {
    */
   minify: (source, destination = '.') =>{
     return src(source, { base: './' })
-      .pipe(rename({ extname: '.min.js' }))
       .pipe(uglifyEs())
+      .pipe(rename({ extname: '.min.js' }))
       .pipe(dest(dest(destination)))
   }
 }
