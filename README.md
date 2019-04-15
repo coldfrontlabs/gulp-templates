@@ -16,29 +16,29 @@ npm install @coldfrontlabs/gulp-templates --save-dev
 
 ## Features
 
-### CSS
+### [CSS](docs/css.md#css-tasks)
 
-* [Lint](docs/css.md)
-* [Fix](docs/css.md)
-* [Compile](docs/css.md)
-* [Minify](docs/css.md)
+* [Lint](docs/css.md#linting)
+* [Fix](docs/css.md#fixing-linting-violations)
+* [Compile](docs/css.md#compiling)
+* [Minify](docs/css.md#minifying)
 
-### JavaScript
+### [JavaScript](docs/js.md#javascript-tasks)
 
-* [Lint](docs/js.md)
-* [Fix](docs/js.md)
-* [Compile](docs/js.md)
-* [Minify](docs/js.md)
+* [Lint](docs/js.md#linting)
+* [Fix](docs/js.md#fixing-linting-violations)
+* [Compile](docs/js.md#compiling)
+* [Minify](docs/js.md#minifying)
 
-### Libraries/Dependencies
+### [Libraries/Dependencies](docs/lib.md#librarydependency-tasks)
 
-* [Fetch](docs/lib.md)
+* [Fetch](docs/lib.md#fetching)
 
-### Sass/SCSS
+### [Sass/SCSS](docs/sass.md#sassscss-tasks)
 
-* [Lint](docs/sass.md)
-* [Fix](docs/sass.md)
-* [Compile](docs/sass.md)
+* [Lint](docs/sass.md#linting)
+* [Fix](docs/sass.md#fixing-linting-violations)
+* [Compile](docs/sass.md#compiling)
 
 ## Sample gulpfile.js
 
@@ -184,6 +184,8 @@ export { watchFiles as watch }
 // Create the default task.
 export default build
 ```
+
+More examples can be found [here](/examples).
 
 ## [Changelog](/CHANGELOG.md)
 

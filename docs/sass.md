@@ -42,6 +42,12 @@ The `fix` function will run [Stylelint](https://github.com/stylelint/stylelint) 
 
 If you do not want to overwrite your existing code, you can provide a destination path as a second parameter.
 
+**Note:** Currently, gulp-stylelint does not respect .stylelintignore files while running the fix command and will overwrite "ignored" files with empty ones.
+
+You can follow the [issue on GitHub](https://github.com/olegskl/gulp-stylelint/issues/85)
+
+As a workaround, it is recommended that you essentially duplicate your ignored files list using the gulp task itself. You can see how to implement this in the [examples provided](/examples) in this package.
+
 ## Compiling
 
 ```jsx
