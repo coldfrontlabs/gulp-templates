@@ -5,6 +5,8 @@
 
 Templates for quick gulp task set-up.
 
+This project assumes users have a basic understand of how Gulp works. If you require more information on the basics of Gulp, please read the [official documentation](https://gulpjs.com/docs/en/getting-started/quick-start).
+
 ## Installation
 
 ```cmd
@@ -12,9 +14,31 @@ npm install gulp --save-dev
 npm install @coldfrontlabs/gulp-templates --save-dev
 ```
 
-## Documentation
+## Features
 
-Detailed documentation to come...
+### CSS
+
+* [Lint](docs/css.md)
+* [Fix](docs/css.md)
+* [Compile](docs/css.md)
+* [Minify](docs/css.md)
+
+### JavaScript
+
+* [Lint](docs/js.md)
+* [Fix](docs/js.md)
+* [Compile](docs/js.md)
+* [Minify](docs/js.md)
+
+### Libraries/Dependencies
+
+* [Fetch](docs/lib.md)
+
+### Sass/SCSS
+
+* [Lint](docs/sass.md)
+* [Fix](docs/sass.md)
+* [Compile](docs/sass.md)
 
 ## Sample gulpfile.js
 
