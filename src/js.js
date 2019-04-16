@@ -25,44 +25,50 @@ const js = {
   /**
    * Runs eslint:fix on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source              - The source path(s).
-   * @param   {String}              [destination = '.'] - The destination path.
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  fix: (source, destination = '.') => {
-    return src(source, { base: './' })
+  fix: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(eslint({ fix: true}))
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
-      .pipe(dest(destination))
+      .pipe(destination ? dest(destination) : dest('.'))
   },
   /**
    * Runs babel on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source              - The source path(s).
-   * @param   {String}              [destination = '.'] - The destination path.
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  compile: (source, destination = '.') => {
-    return src(source, { base: './' })
+  compile: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(babel())
-      .pipe(dest(dest(destination)))
+      .pipe(destination ? dest(destination) : dest('.'))
   },
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source              - The source path(s).
-   * @param   {String}              [destination = '.'] - The destination path.
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  minify: (source, destination = '.') =>{
-    return src(source, { base: './' })
+  minify: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(rename({ extname: '.min.js' }))
       .pipe(uglifyEs())
-      .pipe(dest(dest(destination)))
+      .pipe(destination ? dest(destination) : dest('.'))
   }
 }
 
