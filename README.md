@@ -45,48 +45,50 @@ npm install @coldfrontlabs/gulp-templates --save-dev
 This file will give you a basic example of how to use the templates.
 
 ```jsx
-const { series, watch } = require('gulp')
+// Get gulp components and templates.
+const { series } = require('gulp')
 const { js } = require('@coldfrontlabs/gulp-templates')
 
 const paths = {
-  scripts: {
-    src: 'src/js/**/*.js',
-    dest: 'dist/js'
+  js: {
+    src: 'src/js',
+    dest: 'dest/js',
+    selector: '**/*.js'
   },
   min: '**/*.min.*'
 }
 
 /**
- * Lints all JS files in the src/js/ directory.
+ * Lints all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScripts = () => js.lint(paths.scripts.src)
-lintScripts.description = 'Lints all JS files in the src/js/ directory.'
+const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
+lintScripts.description = 'Lints all JS files.'
 
 /**
- * Lints and fixes all JS files in the src/js/ directory.
+ * Lints and fixes all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.fix(paths.scripts.src)
-lintScriptsFix.description = 'Lints and fixes all JS files in the src/js/ directory.'
+const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
+lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
- * Compiles all JS files in the src/js/ directory and outputs them to dest/js/.
+ * Compiles all JS files using Babel.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileScripts = () => js.compile(paths.scripts.src, paths.scripts.dest)
-compileScripts.description = 'Compiles all JS files in the src/js/ directory and outputs them to dest/js/.'
+const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
+compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
- * Minifies all JS files in the dest/js/ directory.
+ * Minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyScripts = () => js.minify([paths.scripts.dest, `!${paths.min}`], paths.scripts.dest)
-minifyScripts.description = 'Minifies all JS files in the dest/js/ directory.'
+const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
+minifyScripts.description = 'Minifies all JS files.'
 
 /**
  * Compiles and minifies all JS files.
@@ -96,21 +98,12 @@ minifyScripts.description = 'Minifies all JS files in the dest/js/ directory.'
 const build = series(compileScripts, minifyScripts)
 build.description = 'Compiles and minifies all JS files.'
 
-/**
- * Watches all JS files and lints, compiles, and minifies them.
- */
-function watchFiles() {
-  watch(paths.scripts.src, series(lintScripts, compileScripts, minifyScripts))
-}
-watchFiles.description = 'Watches all JS files and lints, compiles, and minifies them.'
-
 // Export all tasks.
 exports.lint = lintScripts
 exports.lintFix = lintScriptsFix
 exports.compile = compileScripts
 exports.minify = minifyScripts
 exports.build = build
-exports.watch = watchFiles
 exports.default = build
 ```
 
@@ -121,67 +114,60 @@ If you want to use the latest greatest JavaScript, follow the [setup instruction
 Here is the example from above written in ES2015.
 
 ```jsx
-import { series, watch } from 'gulp'
+// Get gulp components and templates.
+import { series } from 'gulp'
 import { js } from '@coldfrontlabs/gulp-templates'
 
 const paths = {
-  scripts: {
-    src: 'src/js/**/*.js',
-    dest: 'dist/js'
+  js: {
+    src: 'src/js',
+    dest: 'dest/js',
+    selector: '**/*.js'
   },
   min: '**/*.min.*'
 }
 
 /**
- * Lints all JS files in the src/js/ directory.
+ * Lints all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-export const lint = () => js.lint(paths.scripts.src)
-lint.description = 'Lints all JS files in the src/js/ directory.'
+export const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
+lintScripts.description = 'Lints all JS files.'
 
 /**
- * Lints and fixes all JS files in the src/js/ directory.
+ * Lints and fixes all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintFix = () => js.fix(paths.scripts.src)
-lintFix.description = 'Lints and fixes all JS files in the src/js/ directory.'
+export const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
+lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
- * Compiles all JS files in the src/js/ directory and outputs them to dest/js/.
+ * Compiles all JS files using Babel.
  *
  * @returns {Object} - Gulp stream.
  */
-export const compile = () => js.compile(paths.scripts.src, paths.scripts.dest)
-compile.description = 'Compiles all JS files in the src/js/ directory and outputs them to dest/js/.'
+export const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
+compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
- * Minifies all JS files in the dest/js/ directory.
+ * Minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-export const minify = () => js.minify([paths.scripts.dest, `!${paths.min}`], paths.scripts.dest)
-minify.description = 'Minifies all JS files in the dest/js/ directory.'
+export const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
+minifyScripts.description = 'Minifies all JS files.'
 
 /**
  * Compiles and minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-export const build = series(compile, minify)
+export const build = series(compileScripts, minifyScripts)
 build.description = 'Compiles and minifies all JS files.'
 
-/**
- * Watches all JS files and lints, compiles, and minifies them.
- */
-function watchFiles() {
-  watch(paths.scripts.src, series(lint, compile, minify))
-}
-watchFiles.description = 'Watches all JS files and lints, compiles, and minifies them.'
-export { watchFiles as watch }
-
-// Create the default task.
+// Create default tasks
 export default build
 ```
 
