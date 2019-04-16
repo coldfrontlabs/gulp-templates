@@ -3,13 +3,13 @@
 To gain access to the functions for JavaScript, simply include the following in your `gulpfile.js`:
 
 ```jsx
-const template = require('@coldfront/gulp-templates')
+const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
 ```jsx
-const { js } = require('@coldfront/gulp-templates')
+const { js } = require('@coldfrontlabs/gulp-templates')
 ```
 
 The following are functions included in the templates specifically designed for JavaScript.

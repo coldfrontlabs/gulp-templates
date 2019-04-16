@@ -3,13 +3,13 @@
 To gain access to the functions for libraries and dependencies, simply include the following in your `gulpfile.js`:
 
 ```jsx
-const template = require('@coldfront/gulp-templates')
+const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
 ```jsx
-const { lib } = require('@coldfront/gulp-templates')
+const { lib } = require('@coldfrontlabs/gulp-templates')
 ```
 
 The following are functions included in the templates specifically designed for libraries and dependencies.

@@ -1,6 +1,6 @@
 // Get gulp components and templates.
 const { series } = require('gulp')
-const { js } = require('@coldfront/gulp-templates')
+const { js } = require('@coldfrontlabs/gulp-templates')
 
 const paths = {
   js: {

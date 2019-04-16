@@ -3,13 +3,13 @@
 To gain access to the functions for CSS, simply include the following in your `gulpfile.js`:
 
 ```jsx
-const template = require('@coldfront/gulp-templates')
+const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
 ```jsx
-const { css } = require('@coldfront/gulp-templates')
+const { css } = require('@coldfrontlabs/gulp-templates')
 ```
 
 The following are functions included in the templates specifically designed for CSS.

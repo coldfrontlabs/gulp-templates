@@ -1,6 +1,6 @@
 // Get gulp components and templates.
 import { series, watch } from 'gulp'
-import { css, sass } from '@coldfront/gulp-templates'
+import { css, sass } from '@coldfrontlabs/gulp-templates'
 
 const paths = {
   css: {

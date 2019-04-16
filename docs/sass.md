@@ -3,13 +3,13 @@
 To gain access to the functions for Sass/SCSS, simply include the following in your `gulpfile.js`:
 
 ```jsx
-const template = require('@coldfront/gulp-templates')
+const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
 ```jsx
-const { sass } = require('@coldfront/gulp-templates')
+const { sass } = require('@coldfrontlabs/gulp-templates')
 ```
 
 The following are functions included in the templates specifically designed for Sass/SCSS.
