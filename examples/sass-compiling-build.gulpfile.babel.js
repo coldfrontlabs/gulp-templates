@@ -4,11 +4,14 @@ import { css, sass } from '@coldfrontlabs/gulp-templates'
 
 const paths = {
   css: {
-    src: 'dist/css/**/*.css',
-    dest: 'dist/css'
+    src: 'dist/css',
+    dest: 'dist/css',
+    selector: '**/*.css'
   },
   sass: {
-    src: 'src/scss/**/*.scss',
+    src: 'src/scss',
+    dest: 'src/scss',
+    selector: '**/*.scss',
     // Ignore specifically for Stylelint:fix bug.
     ignore: [
       '!src/scss/ignored-code/**/*.scss'
@@ -22,7 +25,7 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintStyles = () => sass.lint(paths.sass.src)
+export const lintStyles = () => sass.lint(`${paths.sass.src}/${paths.sass.selector}`)
 lintStyles.description = 'Lints all Sass files.'
 
 /**
@@ -30,7 +33,7 @@ lintStyles.description = 'Lints all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintStylesFix = () => sass.fix([paths.sass.src, ...paths.sass.ignore])
+export const lintStylesFix = () => sass.fix([`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore])
 lintStylesFix.description = 'Lints and fixes all Sass files.'
 
 /**
@@ -38,14 +41,14 @@ lintStylesFix.description = 'Lints and fixes all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileSass = () => sass.compile(paths.sass.src, paths.css.dest)
+const compileSass = () => sass.compile(`${paths.sass.src}/${paths.sass.selector}`, paths.css.dest)
 
 /**
  * Compiles all CSS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileCSS = () => css.compile([paths.css.src, `!${paths.min}`], paths.css.dest)
+const compileCSS = () => css.compile([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
 
 /**
  * Compiles all Sass files and CSS files afterward.
@@ -60,7 +63,7 @@ compileStyles.description = 'Compiles all Sass files and CSS files afterward.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const minifyStyles = () => css.minify([paths.css.src, `!${paths.min}`], paths.css.dest)
+export const minifyStyles = () => css.minify([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
 minifyStyles.description = 'Minifies all CSS files.'
 
 /**
@@ -75,7 +78,7 @@ build.description = 'Compiles and minifies all Sass/CSS files.'
  * Watches all Sass files and lints, compiles, and minifies them.
  */
 function watchFiles() {
-  watch(paths.sass.src, series(lintStyles, compileStyles, minifyStyles))
+  watch(`${paths.sass.src}/${paths.sass.selector}`, series(lintStyles, compileStyles, minifyStyles))
 }
 watchFiles.description = 'Watches all Sass files and lints, compiles, and minifies them.'
 export { watchFiles as watch }

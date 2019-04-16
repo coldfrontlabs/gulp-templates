@@ -4,8 +4,9 @@ import { js } from '@coldfrontlabs/gulp-templates'
 
 const paths = {
   js: {
-    src: 'src/js/**/*.js',
-    dest: 'dest/js'
+    src: 'src/js',
+    dest: 'dest/js',
+    selector: '**/*.js'
   },
   min: '**/*.min.*'
 }
@@ -15,7 +16,7 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintScripts = () => js.lint(paths.sass.src)
+export const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
 lintScripts.description = 'Lints all JS files.'
 
 /**
@@ -23,7 +24,7 @@ lintScripts.description = 'Lints all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintScriptsFix = () => js.fix(paths.js.src)
+export const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
 lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
@@ -31,7 +32,7 @@ lintScriptsFix.description = 'Lints and fixes all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const compileScripts = () => js.compile(paths.js.src, paths.js.dest)
+export const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
 compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
@@ -39,7 +40,7 @@ compileScripts.description = 'Compiles all JS files using Babel.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const minifyScripts = () => js.minify([paths.js.src, `!${paths.min}`], paths.js.dest)
+export const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
 minifyScripts.description = 'Minifies all JS files.'
 
 /**

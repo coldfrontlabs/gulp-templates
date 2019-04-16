@@ -4,12 +4,14 @@ const { css, js, lib, sass } = require('@coldfrontlabs/gulp-templates')
 
 const paths = {
   css: {
-    src: 'dist/css/**/*.css',
-    dest: 'dist/css'
+    src: 'dist/css',
+    dest: 'dist/css',
+    selector: '**/*.css'
   },
   js: {
-    src: 'src/js/**/*.js',
-    dest: 'dest/js'
+    src: 'src/js',
+    dest: 'dest/js',
+    selector: '**/*.js'
   },
   lib: {
     src: [
@@ -20,7 +22,9 @@ const paths = {
     dest: 'dist/lib'
   },
   sass: {
-    src: 'src/scss/**/*.scss',
+    src: 'src/scss',
+    dest: 'src/scss',
+    selector: '**/*.scss',
     // Ignore specifically for Stylelint:fix bug.
     ignore: [
       '!src/scss/ignored-code/**/*.scss'
@@ -34,7 +38,7 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-const lintStyles = () => sass.lint(paths.sass.src)
+const lintStyles = () => sass.lint(`${paths.sass.src}/${paths.sass.selector}`)
 lintStyles.description = 'Lints all Sass files.'
 
 /**
@@ -42,7 +46,7 @@ lintStyles.description = 'Lints all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScripts = () => js.lint(paths.sass.src)
+const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
 lintScripts.description = 'Lints all JS files.'
 
 /**
@@ -50,7 +54,7 @@ lintScripts.description = 'Lints all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintStylesFix = () => sass.fix([paths.sass.src, ...paths.sass.ignore])
+const lintStylesFix = () => sass.fix([`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore])
 lintStylesFix.description = 'Lints and fixes all Sass files.'
 
 /**
@@ -58,7 +62,7 @@ lintStylesFix.description = 'Lints and fixes all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.fix(paths.js.src)
+const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
 lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
@@ -66,14 +70,14 @@ lintScriptsFix.description = 'Lints and fixes all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileSass = () => sass.compile(paths.sass.src, paths.css.dest)
+const compileSass = () => sass.compile(`${paths.sass.src}/${paths.sass.selector}`, paths.css.dest)
 
 /**
  * Compiles all CSS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileCSS = () => css.compile([paths.css.src, `!${paths.min}`], paths.css.dest)
+const compileCSS = () => css.compile([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
 
 /**
  * Compiles all Sass files and CSS files afterward.
@@ -88,7 +92,7 @@ compileStyles.description = 'Compiles all Sass files and CSS files afterward.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileScripts = () => js.compile(paths.js.src, paths.js.dest)
+const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
 compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
@@ -96,7 +100,7 @@ compileScripts.description = 'Compiles all JS files using Babel.'
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyStyles = () => css.minify([paths.css.src, `!${paths.min}`], paths.css.dest)
+const minifyStyles = () => css.minify([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
 minifyStyles.description = 'Minifies all CSS files.'
 
 /**
@@ -104,7 +108,7 @@ minifyStyles.description = 'Minifies all CSS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyScripts = () => js.minify([paths.js.src, `!${paths.min}`], paths.js.dest)
+const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
 minifyScripts.description = 'Minifies all JS files.'
 
 /**
@@ -143,8 +147,8 @@ buildProd.description = 'Compiles and minifies all Sass/CSS/JS files and gathers
  * Watches all Sass/JS files and lints, compiles, and minifies them.
  */
 function watchFiles() {
-  watch(paths.sass.src, series(lintStyles, compileStyles, minifyStyles))
-  watch(paths.js.src, series(lintScripts, compileScripts, minifyScripts))
+  watch(`${paths.sass.src}/${paths.sass.selector}`, series(lintStyles, compileStyles, minifyStyles))
+  watch(`${paths.js.src}/${paths.js.selector}`, series(lintScripts, compileScripts, minifyScripts))
 }
 watchFiles.description = 'Watches all Sass/JS files and lints, compiles, and minifies them.'
 
