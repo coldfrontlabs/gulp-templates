@@ -32,7 +32,7 @@ const paths = {
 /**
  * Lints all Sass files.
  *
- * @returns {Object} - Gulp stream
+ * @returns {Object} - Gulp stream.
  */
 export const lintStyles = () => sass.lint(paths.sass.src)
 lintStyles.description = 'Lints all Sass files.'

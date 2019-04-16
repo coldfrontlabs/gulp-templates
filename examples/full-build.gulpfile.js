@@ -2,63 +2,78 @@
 const { series, parallel, watch } = require('gulp')
 const { css, js, lib, sass } = require('@coldfront/gulp-templates')
 
-// Define ignored scss files.
-const sassIgnoreList = [
-  '!src/scss/ignored-code/**/*.scss'
-]
-
-// Define included libraries.
-const libPaths = [
-  'node_modules/package1/dist/package1.min.js',
-  'node_modules/package2/dist/extras/package2-extra1.min.js',
-  'node_modules/package3/dist/package3.min.css'
-]
-
-/**
- * Lints all Sass files within the src/scss/ directory.
- *
- * @returns {Object} - Gulp stream
- */
-const lintStyles = () => sass.lint('src/scss/**/*.scss')
-lintStyles.description = 'Lints all Sass files within the src/scss/ directory.'
-
-/**
- * Lints all JS files within the src/js/ directory.
- *
- * @returns {Object} - Gulp stream.
- */
-const lintScripts = () => js.lint('src/js/**/*.js')
-lintScripts.description = 'Lints all JS files within the src/js/ directory.'
-
-/**
- * Lints and fixes all Sass files within the src/scss/ directory.
- *
- * @returns {Object} - Gulp stream.
- */
-const lintStylesFix = () => sass.fix(['src/scss/**/*.scss', ...sassIgnoreList])
-lintStylesFix.description = 'Lints and fixes all Sass files within the src/scss/ directory.'
+const paths = {
+  css: {
+    src: 'dist/css/**/*.css',
+    dest: 'dist/css'
+  },
+  js: {
+    src: 'src/js/**/*.js',
+    dest: 'dest/js'
+  },
+  lib: {
+    src: [
+      'node_modules/package1/dist/package1.min.js',
+      'node_modules/package2/dist/extras/package2-extra1.min.js',
+      'node_modules/package3/dist/package3.min.css'
+    ],
+    dest: 'dist/lib'
+  },
+  sass: {
+    src: 'src/scss/**/*.scss',
+    // Ignore specifically for Stylelint:fix bug.
+    ignore: [
+      '!src/scss/ignored-code/**/*.scss'
+    ]
+  },
+  min: '**/*.min.*'
+}
 
 /**
- * Lints and fixes all JS files within the src/js/ directory.
+ * Lints all Sass files.
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.fix('src/js/**/*.js')
-lintScriptsFix.description = 'Lints and fixes all JS files within the src/js/ directory.'
+const lintStyles = () => sass.lint(paths.sass.src)
+lintStyles.description = 'Lints all Sass files.'
+
+/**
+ * Lints all JS files.
+ *
+ * @returns {Object} - Gulp stream.
+ */
+const lintScripts = () => js.lint(paths.sass.src)
+lintScripts.description = 'Lints all JS files.'
+
+/**
+ * Lints and fixes all Sass files.
+ *
+ * @returns {Object} - Gulp stream.
+ */
+const lintStylesFix = () => sass.fix([paths.sass.src, ...paths.sass.ignore])
+lintStylesFix.description = 'Lints and fixes all Sass files.'
+
+/**
+ * Lints and fixes all JS files.
+ *
+ * @returns {Object} - Gulp stream.
+ */
+const lintScriptsFix = () => js.fix(paths.js.src)
+lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
  * Compiles all Sass files.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileSass = () => sass.compile('src/scss/**/*.scss', 'dist/css')
+const compileSass = () => sass.compile(paths.sass.src, paths.css.dest)
 
 /**
  * Compiles all CSS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileCSS = () => css.compile(['dist/css/**/*.css', '!dist/css/**/*.min.css'], 'dist/css')
+const compileCSS = () => css.compile([paths.css.src, `!${paths.min}`], paths.css.dest)
 
 /**
  * Compiles all Sass files and CSS files afterward.
@@ -69,36 +84,36 @@ const compileStyles = series(compileSass, compileCSS)
 compileStyles.description = 'Compiles all Sass files and CSS files afterward.'
 
 /**
- * Compiles all JS files within the src/js/ directory using Babel and outputs them to the dist/js directory.
+ * Compiles all JS files using Babel.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileScripts = () => js.compile('src/js/**/*.js', 'dist/js')
-compileScripts.description = 'Compiles all JS files within the src/js/ directory using Babel and outputs them to the dist/js directory.'
+const compileScripts = () => js.compile(paths.js.src, paths.js.dest)
+compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
- * Minifies all CSS files within the dist/css directory.
+ * Minifies all CSS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyStyles = () => css.minify(['dist/css/**/*.css', '!dist/css/**/*.min.css'], 'dist/css')
-minifyStyles.description = 'Minifies all CSS files within the dist/css directory.'
+const minifyStyles = () => css.minify([paths.css.src, `!${paths.min}`], paths.css.dest)
+minifyStyles.description = 'Minifies all CSS files.'
 
 /**
- * Minifies all JS files within the dist/js directory.
+ * Minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyScripts = () => js.minify(['dist/src/js/**/*.js', '!dist/src/js/**/*.min.js'], 'dist/js')
-minifyScripts.description = 'Minifies all JS files within the dist/js directory.'
+const minifyScripts = () => js.minify([paths.js.src, `!${paths.min}`], paths.js.dest)
+minifyScripts.description = 'Minifies all JS files.'
 
 /**
- * Gathers all required libraries into the dist/lib directory.
+ * Gathers all required libraries.
  *
  * @returns {Object} - Gulp stream.
  */
-const fetchLibs = () => lib.fetch(libPaths, 'dist/lib')
-fetchLibs.description = 'Gathers all required libraries into the dist/lib directory.'
+const fetchLibs = () => lib.fetch(paths.lib.src, paths.lib.dest)
+fetchLibs.description = 'Gathers all required libraries.'
 
 /**
  * Lints, compiles, and minifies all Sass/CSS/JS files and gathers all libraries.
@@ -128,8 +143,8 @@ buildProd.description = 'Compiles and minifies all Sass/CSS/JS files and gathers
  * Watches all Sass/JS files and lints, compiles, and minifies them.
  */
 function watchFiles() {
-  watch('src/scss/**/*.scss', series(lintStyles, compileStyles, minifyStyles))
-  watch('src/js/**/*.js', series(lintScripts, compileScripts, minifyScripts))
+  watch(paths.sass.src, series(lintStyles, compileStyles, minifyStyles))
+  watch(paths.js.src, series(lintScripts, compileScripts, minifyScripts))
 }
 watchFiles.description = 'Watches all Sass/JS files and lints, compiles, and minifies them.'
 
