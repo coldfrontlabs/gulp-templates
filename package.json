@@ -37,11 +37,11 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-stylelint": "^8.0.0",
+    "gulp-stylelint": "^9.0.0",
     "gulp-uglify-es": "^1.0.4",
     "postcss": "^7.0.14",
     "postcss-discard-comments": "^4.0.2",
-    "stylelint": "^9.10.1"
+    "stylelint": "^10.0.1"
   },
   "devDependencies": {
     "commitizen": "^3.0.7",
