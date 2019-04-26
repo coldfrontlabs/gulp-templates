@@ -1,5 +1,5 @@
 {
-  "name": "gulp-templates",
+  "name": "@coldfrontlabs/gulp-templates",
   "version": "1.0.0",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
@@ -13,7 +13,11 @@
     "url": "git+https://github.com/coldfrontlabs/gulp-templates.git"
   },
   "keywords": [
-    "gulp"
+    "gulp",
+    "templates",
+    "eslint",
+    "postcss",
+    "stylelint"
   ],
   "author": "Coldfront Labs Inc.",
   "license": "ISC",
@@ -27,7 +31,6 @@
     "autoprefixer": "^9.4.9",
     "cssnano": "^4.1.10",
     "eslint": "^5.15.0",
-    "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-eslint": "^5.0.0",
@@ -42,7 +45,11 @@
   },
   "devDependencies": {
     "commitizen": "^3.0.7",
-    "cz-conventional-changelog": "^2.1.0"
+    "cz-conventional-changelog": "^2.1.0",
+    "gulp": "^4.0.0"
+  },
+  "peerDependencies": {
+    "gulp": ">= 4.0.0"
   },
   "config": {
     "commitizen": {

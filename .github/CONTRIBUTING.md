@@ -1,4 +1,4 @@
-# Contributing to gulp-templates
+# Contributing to @coldfrontlabs/gulp-templates
 
 Whether you want to add a new template or simply report a bug or issue, please have a quick read through these guidelines before contributing.
 
