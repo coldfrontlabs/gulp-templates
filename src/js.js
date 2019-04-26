@@ -12,45 +12,63 @@ const js = {
   /**
    * Runs eslint on a provided source.
    *
-   * @param   {(String | String[])} source        - The source path(s).
-   * @param   {Boolean}             [fix = false] - Toggle the fix option for eslint.
+   * @param   {(String | String[])} source - The source path(s).
    *
    * @returns {Object} - Gulp stream.
    */
-  lint: (source, fix = false) => {
-    return src(source, { base: './' })
-      .pipe(eslint({ fix: fix }))
+  lint: (source) => {
+    return src(source)
+      .pipe(eslint())
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
-      .pipe(dest('.'))
+  },
+  /**
+   * Runs eslint:fix on a provided source and outputs the result.
+   *
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
+   *
+   * @returns {Object} - Gulp stream.
+   */
+  fix: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
+      .pipe(eslint({ fix: true}))
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError())
+      .pipe(destination ? dest(destination) : dest('.'))
   },
   /**
    * Runs babel on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source                                  - The source path(s).
-   * @param   {String}              destination                             - The destination path.
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
   compile: (source, destination) => {
-    return src(source)
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(babel())
-      .pipe(dest(destination))
+      .pipe(destination ? dest(destination) : dest('.'))
   },
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source                             - The source path(s).
-   * @param   {String}              destination                        - The destination path.
-   * @param   {Object}              [options = { extname: '.min.js' }] - The renaming options.
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  minify: (source, destination, options = { extname: '.min.js' }) =>{
-    return src(source)
-      .pipe(rename(options))
+  minify: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
+      .pipe(rename({ extname: '.min.js' }))
       .pipe(uglifyEs())
-      .pipe(dest(destination))
+      .pipe(destination ? dest(destination) : dest('.'))
   }
 }
 

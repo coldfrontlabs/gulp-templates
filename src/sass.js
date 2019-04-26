@@ -8,33 +8,50 @@ const stylelint = require('gulp-stylelint')
 // Declare base functions.
 const sass = {
   /**
-   * Runs sass-lint on a provided source.
+   * Runs stylelint on a provided source.
    *
-   * @param   {(String | String[])} source        - The source path(s).
-   * @param   {Boolean}             [fix = false] - Toggle the fix option for stylelint.
+   * @param   {(String | String[])} source - The source path(s).
    *
    * @returns {Object} - Gulp stream.
    */
-  lint: (source, fix = false) => {
-    return src(source, { base: './' })
+  lint: (source) => {
+    return src(source)
+      .pipe(stylelint({
+        reporters: [{ formatter: 'verbose', console: true }]
+      }))
+  },
+  /**
+   * Runs stylelint:fix on a provided source and outputs the result.
+   *
+   * @param   {(String | String[])} source      - The source path(s).
+   * @param   {String | Null}       destination - The destination path.
+   *
+   * @returns {Object} - Gulp stream.
+   */
+  fix: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }],
-        fix: fix
+        fix: true
       }))
-      .pipe(dest('.'))
+      .pipe(destination ? dest(destination) : dest('.'))
   },
   /**
    * Runs sass and on a provided source and outputs the result.
    *
    * @param   {(String | String[])} source      - The source path(s).
-   * @param   {String}              destination - The destination path.
+   * @param   {String | Null}       destination - The destination path.
    *
    * @returns {Object} - Gulp stream.
    */
-  compile: (source, desination) => {
-    return src(source)
+  compile: (source, destination) => {
+    const stream = destination ? src(source) : src(source, { base: './' })
+
+    return stream
       .pipe(gulpSass().on('error', gulpSass.logError))
-      .pipe(dest(desination));
+      .pipe(destination ? dest(destination) : dest('.'))
   }
 }
 

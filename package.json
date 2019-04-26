@@ -1,18 +1,23 @@
 {
-  "name": "gulp-templates",
+  "name": "@coldfrontlabs/gulp-templates",
   "version": "1.0.0",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint --ext .js .",
-    "lint:fix": "npx eslint --ext .js . --fix"
+    "lint:fix": "npx eslint --ext .js . --fix",
+    "commit": "npx git cz"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coldfrontlabs/gulp-templates.git"
   },
   "keywords": [
-    "gulp"
+    "gulp",
+    "templates",
+    "eslint",
+    "postcss",
+    "stylelint"
   ],
   "author": "Coldfront Labs Inc.",
   "license": "ISC",
@@ -26,17 +31,38 @@
     "autoprefixer": "^9.4.9",
     "cssnano": "^4.1.10",
     "eslint": "^5.15.0",
-    "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-stylelint": "^8.0.0",
+    "gulp-stylelint": "^9.0.0",
     "gulp-uglify-es": "^1.0.4",
     "postcss": "^7.0.14",
     "postcss-discard-comments": "^4.0.2",
-    "stylelint": "^9.10.1"
+    "stylelint": "^10.0.1"
+  },
+  "devDependencies": {
+    "commitizen": "^3.0.7",
+    "cz-conventional-changelog": "^2.1.0",
+    "gulp": "^4.0.0"
+  },
+  "peerDependencies": {
+    "gulp": ">= 4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "env": {
+      "es6": "true",
+      "node": "true"
+    }
   }
 }
