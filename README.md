@@ -52,7 +52,7 @@ const { js } = require('@coldfrontlabs/gulp-templates')
 const paths = {
   js: {
     src: 'src/js',
-    dest: 'dest/js',
+    dest: 'dist/js',
     selector: '**/*.js'
   },
   min: '**/*.min.*'
@@ -121,7 +121,7 @@ import { js } from '@coldfrontlabs/gulp-templates'
 const paths = {
   js: {
     src: 'src/js',
-    dest: 'dest/js',
+    dest: 'dist/js',
     selector: '**/*.js'
   },
   min: '**/*.min.*'
