@@ -10,7 +10,7 @@ const paths = {
   },
   js: {
     src: 'src/js',
-    dest: 'dest/js',
+    dest: 'dist/js',
     selector: '**/*.js'
   },
   lib: {
@@ -116,7 +116,7 @@ minifyScripts.description = 'Minifies all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const fetchLibs = () => lib.fetch(paths.lib.src, paths.lib.dest)
+const fetchLibs = () => lib.fetch(paths.lib.src, paths.lib.dest, { base: './node_modules/' })
 fetchLibs.description = 'Gathers all required libraries.'
 
 /**

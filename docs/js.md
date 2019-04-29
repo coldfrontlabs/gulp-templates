@@ -28,6 +28,13 @@ js.lint(['input-path-1', '!input-path-2', 'etc'])
 
 The `lint` function will run [ESLint](https://github.com/eslint/eslint) on the provided path or array of paths and output the result to the console.
 
+### Options
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| source | string or array of strings | null | true | The source path or paths. |
+| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
+
 ## Fixing Linting Violations
 
 ```jsx
@@ -41,6 +48,15 @@ js.fix(['input-path-1', '!input-path-2', 'etc'], 'optional-output-path')
 The `fix` function will run [ESLint](https://github.com/eslint/eslint) on the provided path or array of paths and fix all errors that it can. It will then overwrite the existing files with the fixes, and output the violations it cannot fix to the console.
 
 If you do not want to overwrite your existing code, you can provide a destination path as a second parameter.
+
+### Options
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| source | string or array of strings | null | true | The source path or paths. |
+| destination | string | null | false | The destination path. Will default to "." if no path is provided. |
+| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
+| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
 
 ## Compiling
 
@@ -56,6 +72,15 @@ The `compile` function will run [Babel](https://github.com/babel/babel) on the p
 
 If you do not want to overwrite your existing code, you can provide a destination path as a second parameter.
 
+### Options
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| source | string or array of strings | null | true | The source path or paths. |
+| destination | string | null | false | The destination path. Will default to "." if no path is provided. |
+| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
+| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
+
 ## Minifying
 
 ```jsx
@@ -69,3 +94,12 @@ js.minify(['input-path-1', '!input-path-2', 'etc'], 'optional-output-path')
 The `minify` function will run [Terser](https://github.com/terser-js/terser) on the provided path or array of paths. It will then rename and output the newly minified files into the same directories as the source.
 
 If you do not want to output the minified files into their original directories, you can provide a destination path as a second parameter.
+
+### Options
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| source | string or array of strings | null | true | The source path or paths. |
+| destination | string | null | false | The destination path. Will default to "." if no path is provided. |
+| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
+| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
