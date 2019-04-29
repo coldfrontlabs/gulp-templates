@@ -14,12 +14,13 @@ const css = {
   /**
    * Runs stylelint on a provided source.
    *
-   * @param   {(String | String[])} source - The source path(s).
+   * @param   {(String | String[])} source                    - The source path(s).
+   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
    *
    * @returns {Object} - Gulp stream.
    */
-  lint: (source) => {
-    return src(source)
+  lint: (source, sourceOptions = {}) => {
+    return src(source, sourceOptions)
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }]
       }))
@@ -27,48 +28,63 @@ const css = {
   /**
    * Runs stylelint:fix on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source      - The source path(s).
-   * @param   {String | Null}       destination - The destination path.
+   * @param   {(String | String[])} source                    - The source path(s).
+   * @param   {String | Null}       destination               - The destination path.
+   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [destinationOptions = {}] - Options for the destination.
    *
    * @returns {Object} - Gulp stream.
    */
-  fix: (source, destination) => {
-    const stream = destination ? src(source) : src(source, { base: './' })
+  fix: (source, destination, sourceOptions = {}, destinationOptions = {}) => {
+    if (!destination) {
+      if (!sourceOptions.base) sourceOptions.base = './'
+      destination = '.'
+    }
 
-    return stream
+    return src(source, sourceOptions)
       .pipe(stylelint({
         reporters: [{ formatter: 'verbose', console: true }],
         fix: true
       }))
-      .pipe(destination ? dest(destination) : dest('.'))
+      .pipe(dest(destination, destinationOptions))
   },
   /**
    * Runs postcss/autoprefixer on a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source      - The source path(s).
-   * @param   {String | Null}       destination - The destination path.
+   * @param   {(String | String[])} source                    - The source path(s).
+   * @param   {String | Null}       destination               - The destination path.
+   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [destinationOptions = {}] - Options for the destination.
    *
    * @returns {Object} - Gulp stream.
    */
-  compile: (source, destination) => {
-    const stream = destination ? src(source) : src(source, { base: './' })
+  compile: (source, destination, sourceOptions = {}, destinationOptions = {}) => {
+    if (!destination) {
+      if (!sourceOptions.base) sourceOptions.base = './'
+      destination = '.'
+    }
 
-    return stream
+    return src(source, sourceOptions)
       .pipe(postcss([autoprefixer()]))
-      .pipe(destination ? dest(destination) : dest('.'))
+      .pipe(dest(destination, destinationOptions))
   },
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {(String | String[])} source      - The source path(s).
-   * @param   {String | Null}       destination - The destination path.
+   * @param   {(String | String[])} source                    - The source path(s).
+   * @param   {String | Null}       destination               - The destination path.
+   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [destinationOptions = {}] - Options for the destination.
    *
    * @returns {Object} - Gulp stream.
    */
-  minify: (source, destination) => {
-    const stream = destination ? src(source) : src(source, { base: './' })
+  minify: (source, destination, sourceOptions = {}, destinationOptions = {}) => {
+    if (!destination) {
+      if (!sourceOptions.base) sourceOptions.base = './'
+      destination = '.'
+    }
 
-    return stream
+    return src(source, sourceOptions)
       .pipe(postcss(
         [
           cssnano(),
@@ -76,7 +92,7 @@ const css = {
         ]
       ))
       .pipe(rename({ extname: '.min.css' }))
-      .pipe(destination ? dest(destination) : dest('.'))
+      .pipe(dest(destination, destinationOptions))
   }
 }
 
