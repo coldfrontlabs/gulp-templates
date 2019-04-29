@@ -116,7 +116,7 @@ minifyScripts.description = 'Minifies all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const fetchLibs = () => lib.fetch(paths.lib.src, paths.lib.dest)
+export const fetchLibs = () => lib.fetch(paths.lib.src, paths.lib.dest, { base: './node_modules/' })
 fetchLibs.description = 'Gathers all required libraries.'
 
 /**
