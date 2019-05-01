@@ -11,7 +11,7 @@ const sass = {
    * Runs stylelint on a provided source.
    *
    * @param   {(String | String[])} source                    - The source path(s).
-   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [sourceOptions = {}]       - Options for the source.
    *
    * @returns {Object} - Gulp stream.
    */
@@ -26,7 +26,7 @@ const sass = {
    *
    * @param   {(String | String[])} source                    - The source path(s).
    * @param   {String | Null}       destination               - The destination path.
-   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [sourceOptions = {}]       - Options for the source.
    * @param   {Object}              [destinationOptions = {}] - Options for the destination.
    *
    * @returns {Object} - Gulp stream.
@@ -49,7 +49,7 @@ const sass = {
    *
    * @param   {(String | String[])} source                    - The source path(s).
    * @param   {String | Null}       destination               - The destination path.
-   * @param   {Object}              [sourcOptions = {}]       - Options for the source.
+   * @param   {Object}              [sourceOptions = {}]       - Options for the source.
    * @param   {Object}              [destinationOptions = {}] - Options for the destination.
    *
    * @returns {Object} - Gulp stream.
