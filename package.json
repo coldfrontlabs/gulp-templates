@@ -44,9 +44,12 @@
     "stylelint": "^10.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
     "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^2.1.0",
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "husky": "^2.3.0"
   },
   "peerDependencies": {
     "gulp": ">= 4.0.0"
@@ -63,6 +66,15 @@
     "env": {
       "es6": "true",
       "node": "true"
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint"
     }
   }
 }
