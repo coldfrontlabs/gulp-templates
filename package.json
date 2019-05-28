@@ -71,10 +71,15 @@
       "sourceType": "module"
     }
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "npm run lint"
+      "pre-commit": "echo committing as $(git config user.name) && npm run lint"
     }
   }
 }
