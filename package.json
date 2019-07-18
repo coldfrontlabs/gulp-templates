@@ -1,6 +1,6 @@
 {
   "name": "@coldfrontlabs/gulp-templates",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
@@ -30,10 +30,8 @@
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.4.9",
     "cssnano": "^4.1.10",
-    "eslint": "^5.15.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
-    "gulp-eslint": "^5.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
@@ -44,9 +42,14 @@
     "stylelint": "^10.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
     "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^2.1.0",
-    "gulp": "^4.0.0"
+    "eslint": "^6.0.1",
+    "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
+    "husky": "^3.0.0"
   },
   "peerDependencies": {
     "gulp": ">= 4.0.0"
@@ -63,6 +66,20 @@
     "env": {
       "es6": "true",
       "node": "true"
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "echo committing as $(git config user.name) && npm run lint"
     }
   }
 }
