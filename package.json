@@ -1,6 +1,6 @@
 {
   "name": "@coldfrontlabs/gulp-templates",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
@@ -30,8 +30,10 @@
     "@babel/preset-env": "^7.4.4",
     "autoprefixer": "^9.4.9",
     "cssnano": "^4.1.10",
+    "eslint": "^6.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
+    "gulp-eslint": "^6.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
@@ -46,9 +48,7 @@
     "@commitlint/config-conventional": "^8.1.0",
     "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^6.0.1",
     "gulp": "^4.0.2",
-    "gulp-eslint": "^6.0.0",
     "husky": "^3.0.0"
   },
   "peerDependencies": {

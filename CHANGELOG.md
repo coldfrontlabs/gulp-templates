@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- Move eslint and gulp-eslint to dependencies
+
 ## 1.1.1
 
 - Update dependencies to latest
