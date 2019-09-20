@@ -1,6 +1,6 @@
 {
   "name": "@coldfrontlabs/gulp-templates",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
