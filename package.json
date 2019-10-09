@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "npx eslint --ext .js .",
     "lint:fix": "npx eslint --ext .js . --fix",
-    "commit": "npx git cz"
+    "commit": "npx git cz",
+    "release": "standard-release"
   },
   "repository": {
     "type": "git",
@@ -49,7 +50,8 @@
     "commitizen": "~4.0.3",
     "cz-conventional-changelog": "~3.0.0",
     "gulp": "~4.0.0",
-    "husky": "~3.0.0"
+    "husky": "~3.0.0",
+    "standard-version": "^7.0.0"
   },
   "peerDependencies": {
     "gulp": ">= 4.0.0"
@@ -81,5 +83,11 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "echo committing as $(git config user.name) && npm run lint"
     }
+  },
+  "standard-version": {
+    "types": [
+      {"type": "docs", "section": "Documentation", "hidden": false},
+      {"type": "build", "section": "Build System", "hidden": false}
+    ]
   }
 }
