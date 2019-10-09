@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/coldfrontlabs/gulp-templates#readme",
   "dependencies": {
-    "@babel/core": "~7.6.0",
-    "@babel/preset-env": "~7.6.0",
-    "autoprefixer": "~9.6.0",
+    "@babel/core": "~7.6.3",
+    "@babel/preset-env": "~7.6.3",
+    "autoprefixer": "~9.6.4",
     "cssnano": "~4.1.0",
-    "eslint": "~6.4.0",
+    "eslint": "~6.5.1",
     "gulp-babel": "~8.0.0",
     "gulp-clean-css": "~4.2.0",
     "gulp-eslint": "~6.0.0",
@@ -50,8 +50,8 @@
     "commitizen": "~4.0.3",
     "cz-conventional-changelog": "~3.0.0",
     "gulp": "~4.0.0",
-    "husky": "~3.0.0",
-    "standard-version": "^7.0.0"
+    "husky": "~3.0.8",
+    "standard-version": "~7.0.0"
   },
   "peerDependencies": {
     "gulp": ">= 4.0.0"
@@ -86,8 +86,16 @@
   },
   "standard-version": {
     "types": [
-      {"type": "docs", "section": "Documentation", "hidden": false},
-      {"type": "build", "section": "Build System", "hidden": false}
+      {
+        "type": "docs",
+        "section": "Documentation",
+        "hidden": false
+      },
+      {
+        "type": "build",
+        "section": "Build System",
+        "hidden": false
+      }
     ]
   }
 }
