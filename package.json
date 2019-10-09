@@ -83,5 +83,15 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "echo committing as $(git config user.name) && npm run lint"
     }
+  },
+  "standard-version": {
+    "types": [
+      {"type":"feat","section":"Features"},
+      {"type":"fix","section":"Bug Fixes"},
+      {"type":"test","section":"Tests", "hidden": true},
+      {"type":"build","section":"Build System", "hidden": false},
+      {"type":"ci","hidden":true},
+      {"type":"docs","section":"Documentation"}
+    ]
   }
 }
