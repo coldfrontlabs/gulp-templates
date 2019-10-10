@@ -85,7 +85,8 @@
     }
   },
   "standard-version": {
-    "types": [{
+    "types": [
+      {
         "type": "feat",
         "section": "Features"
       },
