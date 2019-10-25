@@ -95,6 +95,34 @@
         "section": "Bug Fixes"
       },
       {
+        "type": "perf",
+        "section": "Performance Improvements"
+      },
+      {
+        "type": "revert",
+        "section": "Reverts"
+      },
+      {
+        "type": "docs",
+        "section": "Documentation",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "section": "Styles",
+        "hidden": true
+      },
+      {
+        "type": "chore",
+        "section": "Miscellaneous Chores",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Code Refactoring",
+        "hidden": false
+      },
+      {
         "type": "test",
         "section": "Tests",
         "hidden": true
@@ -106,11 +134,8 @@
       },
       {
         "type": "ci",
-        "hidden": true
-      },
-      {
-        "type": "docs",
-        "section": "Documentation"
+        "section": "Continuous Integration",
+        "hidden": false
       }
     ]
   }
