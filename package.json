@@ -1,6 +1,6 @@
 {
   "name": "@coldfrontlabs/gulp-templates",
-  "version": "1.2.0",
+  "version": "2.0.0-alpha.0",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
@@ -88,19 +88,23 @@
     "types": [
       {
         "type": "feat",
-        "section": "Features"
+        "section": "Features",
+        "hidden": false
       },
       {
         "type": "fix",
-        "section": "Bug Fixes"
+        "section": "Bug Fixes",
+        "hidden": false
       },
       {
         "type": "perf",
-        "section": "Performance Improvements"
+        "section": "Performance Improvements",
+        "hidden": false
       },
       {
         "type": "revert",
-        "section": "Reverts"
+        "section": "Reverts",
+        "hidden": false
       },
       {
         "type": "docs",

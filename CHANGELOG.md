@@ -2,36 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.2.0](https://github.com/coldfrontlabs/gulp-templates/compare/v1.1.3...v1.2.0) (2019-10-09)
+## [2.0.0-alpha.0](https://github.com/coldfrontlabs/gulp-templates/compare/v1.2.0...v2.0.0-alpha.0) (2019-10-27)
 
+
+### ⚠ BREAKING CHANGES
+
+* **source:** Combining all parameters into a single object will cause all existing projects using the templates to fail due to the expected input changes.
 
 ### Features
 
-* **changelog:** add custom settings for changelog ([5ee3e20](https://github.com/coldfrontlabs/gulp-templates/commit/5ee3e20a53ffca5bf69ef35ced4f16653f3108a9))
-
-
-### Code Refactoring
-
-* **config:** remove custom standard release config ([ba8a9a5](https://github.com/coldfrontlabs/gulp-templates/commit/ba8a9a587daa9488d0f02ed8a016e28032b5435b))
+* **source:** combine parameters into single object ([#36](https://github.com/coldfrontlabs/gulp-templates/issues/36)) ([08e6c22](https://github.com/coldfrontlabs/gulp-templates/commit/08e6c22dc033be51bcd57a43e636988607e7dd80))
 
 ### [1.1.3](https://github.com/coldfrontlabs/gulp-templates/compare/v1.1.2...v1.1.3) (2019-09-20)
-
-
-### Build System
-
-* **config:** move commitlint config into package.json ([8d14fcb](https://github.com/coldfrontlabs/gulp-templates/commit/8d14fcb74b7ead2ab5a343b21b038f800520f9e8))
-* **npm:** add husky and githooks ([b19d48d](https://github.com/coldfrontlabs/gulp-templates/commit/b19d48db0e3222e2419a48d80532dddf7b5e87a9))
-* **npm:** apply security and other updates ([#23](https://github.com/coldfrontlabs/gulp-templates/issues/23)) ([c9b9875](https://github.com/coldfrontlabs/gulp-templates/commit/c9b98755a75ee18cf49585e1d7120d4362f19008))
-* move eslint and gulp-eslint to dependencies ([faa9f09](https://github.com/coldfrontlabs/gulp-templates/commit/faa9f0976213bf860a720f9fdd77bb14ee37f119))
-* **npm:** run audit and updates ([#31](https://github.com/coldfrontlabs/gulp-templates/issues/31)) ([bf7ef7c](https://github.com/coldfrontlabs/gulp-templates/commit/bf7ef7c7678080571f61edb639cc97ba9a5f906e))
-* **npm:** run audit and updates ([#31](https://github.com/coldfrontlabs/gulp-templates/issues/31)) ([e58c24b](https://github.com/coldfrontlabs/gulp-templates/commit/e58c24b994229f0deb2cd49def8a68dc7deeee1d))
 
 
 ### Documentation
 
 * **changelog:** user keepachangelog format ([#30](https://github.com/coldfrontlabs/gulp-templates/issues/30)) ([fb3b297](https://github.com/coldfrontlabs/gulp-templates/commit/fb3b2972790b3e6f68b2e7e23f53cbde5b428d89))
-* **changelog:** user keepachangelog format ([#30](https://github.com/coldfrontlabs/gulp-templates/issues/30)) ([0a2adfa](https://github.com/coldfrontlabs/gulp-templates/commit/0a2adfae24db2f786ec125a63871d30279d88a0f))
-* **sp:** correct sourcOptions to sourceOptions ([#19](https://github.com/coldfrontlabs/gulp-templates/issues/19)) ([9af4a44](https://github.com/coldfrontlabs/gulp-templates/commit/9af4a44e3cf55e9141d6acb497eca875b9c37d62)), closes [#18](https://github.com/coldfrontlabs/gulp-templates/issues/18)
+
+
+### Build System
+
+* **npm:** run audit and updates ([#31](https://github.com/coldfrontlabs/gulp-templates/issues/31)) ([bf7ef7c](https://github.com/coldfrontlabs/gulp-templates/commit/bf7ef7c7678080571f61edb639cc97ba9a5f906e))
+
+### [1.1.2](https://github.com/coldfrontlabs/gulp-templates/compare/v1.1.1...v1.1.2) (2019-07-19)
+
+### [1.1.1](https://github.com/coldfrontlabs/gulp-templates/compare/v1.1.0...v1.1.1) (2019-07-18)
+
+
+### Features
+
+* **release:** 1.1.1 ([c3b5d1b](https://github.com/coldfrontlabs/gulp-templates/commit/c3b5d1b702648a49133cc383f24b7cc0d62feef5))
 
 ## [1.1.0](https://github.com/coldfrontlabs/gulp-templates/compare/v1.0.0...v1.1.0) (2019-04-29)
 
