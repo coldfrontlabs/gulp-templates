@@ -19,11 +19,17 @@ All input/output paths used by these functions are the same as any other gulp ta
 ## Linting
 
 ```jsx
-template.sass.lint('input-path')
+template.sass.lint({ source: 'input-path' })
 ```
 
+or
+
 ```jsx
-sass.lint(['input-path-1', '!input-path-2', 'etc'])
+const params = {
+  source: ['input-path-1', '!input-path-2', 'etc']
+}
+
+sass.lint(params)
 ```
 
 The `lint` function will run [Stylelint](https://github.com/stylelint/stylelint) on the provided path or array of paths and output the result to the console.
@@ -35,14 +41,30 @@ The `lint` function will run [Stylelint](https://github.com/stylelint/stylelint)
 | source | string or array of strings | null | true | The source path or paths. |
 | sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
 
+**Important Note:** _All_ options must be passed within a single parameter object.
+
+```jsx
+{
+  source: '',
+  sourceOptions: {}
+}
+```
+
 ## Fixing Linting Violations
 
 ```jsx
-template.sass.fix('input-path')
+template.sass.fix({ source: 'input-path' })
 ```
 
+or
+
 ```jsx
-sass.fix(['input-path-1', '!input-path-2', 'etc'], 'optional-output-path')
+const param = {
+  source: ['input-path-1', '!input-path-2', 'etc'],
+  destination: 'optional-output-path'
+}
+
+sass.fix(params)
 ```
 
 The `fix` function will run [Stylelint](https://github.com/stylelint/stylelint) on the provided path or array of paths and fix all errors that it can. It will then overwrite the existing files with the fixes, and output the violations it cannot fix to the console.
@@ -64,14 +86,32 @@ As a workaround, it is recommended that you essentially duplicate your ignored f
 | sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
 | destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
 
+**Important Note:** _All_ options must be passed within a single parameter object.
+
+```jsx
+{
+  source: '',
+  destination: '',
+  sourceOptions: {},
+  destinationOptions: {}
+}
+```
+
 ## Compiling
 
 ```jsx
-template.sass.compile('input-path')
+template.sass.compile({ source: 'input-path' })
 ```
 
+or
+
 ```jsx
-sass.compile(['input-path-1', '!input-path-2', 'etc'], 'optional-output-path')
+const params = {
+  source: ['input-path-1', '!input-path-2', 'etc'],
+  destination: 'optional-output-path'
+}
+
+sass.compile(params)
 ```
 
 The `compile` function will run the Sass compiler (specifically [Node-Sass](https://github.com/sass/node-sass)) on the provided path or array of paths. It will then output the newly compiled CSS to the same directories as the source.
@@ -86,3 +126,14 @@ If you do not want to output the CSS files into their original directories, you 
 | destination | string | null | false | The destination path. Will default to "." if no path is provided. |
 | sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
 | destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
+
+**Important Note:** _All_ options must be passed within a single parameter object.
+
+```jsx
+{
+  source: '',
+  destination: '',
+  sourceOptions: {},
+  destinationOptions: {}
+}
+```
