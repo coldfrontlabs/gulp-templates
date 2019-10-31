@@ -40,6 +40,10 @@ npm install -D @coldfrontlabs/gulp-templates
 * [Fix](docs/sass.md#fixing-linting-violations)
 * [Compile](docs/sass.md#compiling)
 
+## Upgrading major versions?
+
+Check out the new [upgrade guide](docs/upgrading.md)!
+
 ## Sample gulpfile.js
 
 This file will give you a basic example of how to use the templates.
