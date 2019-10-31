@@ -5,7 +5,7 @@
 
 Templates for quick gulp task set-up.
 
-This project assumes users have a basic understand of how Gulp works. If you require more information on the basics of Gulp, please read the [official documentation](https://gulpjs.com/docs/en/getting-started/quick-start).
+This project assumes users have a basic understanding of how Gulp works. If you require more information on the basics of Gulp, please read the [official documentation](https://gulpjs.com/docs/en/getting-started/quick-start).
 
 ## Installation
 
