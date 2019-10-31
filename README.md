@@ -10,8 +10,8 @@ This project assumes users have a basic understanding of how Gulp works. If you 
 ## Installation
 
 ```cmd
-npm install gulp --save-dev
-npm install @coldfrontlabs/gulp-templates --save-dev
+npm install -D gulp
+npm install -D @coldfrontlabs/gulp-templates
 ```
 
 ## Features
