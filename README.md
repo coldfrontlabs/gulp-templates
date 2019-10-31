@@ -63,7 +63,9 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
+const lintScripts = () => js.lint({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScripts.description = 'Lints all JS files.'
 
 /**
@@ -71,7 +73,9 @@ lintScripts.description = 'Lints all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
+const lintScriptsFix = () => js.fix({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
@@ -79,7 +83,10 @@ lintScriptsFix.description = 'Lints and fixes all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
+const compileScripts = () => js.compile({
+  source: `${paths.js.src}/${paths.js.selector}`,
+  destination: paths.js.dest
+})
 compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
@@ -87,24 +94,45 @@ compileScripts.description = 'Compiles all JS files using Babel.'
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
+const minifyScripts = () => js.minify({
+  source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
+  destination: paths.js.dest
+})
 minifyScripts.description = 'Minifies all JS files.'
+
+/**
+ * Lints, compiles, and minifies all JS files.
+ *
+ * @returns {Object} - Gulp stream.
+ */
+const buildDev = series(lintScripts, compileScripts, minifyScripts)
+buildDev.description = 'Lints, compiles, and minifies all JS files.'
 
 /**
  * Compiles and minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const build = series(compileScripts, minifyScripts)
-build.description = 'Compiles and minifies all JS files.'
+const buildProd = series(compileScripts, minifyScripts)
+buildProd.description = 'Compiles and minifies all JS files.'
 
-// Export all tasks.
-exports.lint = lintScripts
-exports.lintFix = lintScriptsFix
-exports.compile = compileScripts
-exports.minify = minifyScripts
-exports.build = build
-exports.default = build
+// Export linting tasks.
+exports.lintScripts = lintScripts
+exports.lintScriptsFix = lintScriptsFix
+
+// Export compiling task.
+exports.compileScripts = compileScripts
+
+// Export minifying task.
+exports.minifyScripts = minifyScripts
+
+// Export build tasks.
+exports.buildDev = buildDev
+exports.buildProd = buildProd
+
+// Export default task.
+exports.default = buildProd
+
 ```
 
 ### Using the latest JavaScript version
@@ -132,7 +160,9 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
+export const lintScripts = () => js.lint({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScripts.description = 'Lints all JS files.'
 
 /**
@@ -140,7 +170,9 @@ lintScripts.description = 'Lints all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
+export const lintScriptsFix = () => js.fix({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
@@ -148,7 +180,10 @@ lintScriptsFix.description = 'Lints and fixes all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
+export const compileScripts = () => js.compile({
+  source: `${paths.js.src}/${paths.js.selector}`,
+  destination: paths.js.dest
+})
 compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
@@ -156,19 +191,31 @@ compileScripts.description = 'Compiles all JS files using Babel.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
+export const minifyScripts = () => js.minify({
+  source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
+  destination: paths.js.dest
+})
 minifyScripts.description = 'Minifies all JS files.'
+
+/**
+ * Lints, compiles, and minifies all JS files.
+ *
+ * @returns {Object} - Gulp stream.
+ */
+export const buildDev = series(lintScripts, compileScripts, minifyScripts)
+buildDev.description = 'Lints, compiles, and minifies all JS files.'
 
 /**
  * Compiles and minifies all JS files.
  *
  * @returns {Object} - Gulp stream.
  */
-export const build = series(compileScripts, minifyScripts)
-build.description = 'Compiles and minifies all JS files.'
+export const buildProd = series(compileScripts, minifyScripts)
+buildProd.description = 'Compiles and minifies all JS files.'
 
 // Create default tasks
-export default build
+export default buildProd
+
 ```
 
 More examples can be found [here](/examples).
