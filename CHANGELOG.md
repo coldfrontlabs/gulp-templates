@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v2.0.0-alpha.0...v2.0.0) (2019-10-31)
+
+
+### Documentation
+
+* **guide:** add an upgrade guide for 1.x to 2.x ([#39](https://github.com/coldfrontlabs/gulp-templates/issues/39)) ([10e48f1](https://github.com/coldfrontlabs/gulp-templates/commit/10e48f187726cccb5d61adcdbb240db8580b6522))
+* update documentation for 2.0.0 ([#38](https://github.com/coldfrontlabs/gulp-templates/issues/38)) ([a34cfc9](https://github.com/coldfrontlabs/gulp-templates/commit/a34cfc9a4740667ec9730df7bbec0403901283db))
+
 ## [2.0.0-alpha.0](https://github.com/coldfrontlabs/gulp-templates/compare/v1.2.0...v2.0.0-alpha.0) (2019-10-27)
 
 
