@@ -25,7 +25,9 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintStyles = () => sass.lint(`${paths.sass.src}/${paths.sass.selector}`)
+export const lintStyles = () => sass.lint({
+  source: `${paths.sass.src}/${paths.sass.selector}`
+})
 lintStyles.description = 'Lints all Sass files.'
 
 /**
@@ -33,7 +35,9 @@ lintStyles.description = 'Lints all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const lintStylesFix = () => sass.fix([`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore])
+export const lintStylesFix = () => sass.fix({
+  source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore]
+})
 lintStylesFix.description = 'Lints and fixes all Sass files.'
 
 /**
@@ -41,14 +45,20 @@ lintStylesFix.description = 'Lints and fixes all Sass files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileSass = () => sass.compile(`${paths.sass.src}/${paths.sass.selector}`, paths.css.dest)
+const compileSass = () => sass.compile({
+  source: `${paths.sass.src}/${paths.sass.selector}`,
+  destination: paths.css.dest
+})
 
 /**
  * Compiles all CSS files.
  *
  * @returns {Object} - Gulp stream.
  */
-const compileCSS = () => css.compile([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
+const compileCSS = () => css.compile({
+  source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
+  destination: paths.css.dest
+})
 
 /**
  * Compiles all Sass files and CSS files afterward.
@@ -63,7 +73,10 @@ compileStyles.description = 'Compiles all Sass files and CSS files afterward.'
  *
  * @returns {Object} - Gulp stream.
  */
-export const minifyStyles = () => css.minify([`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`], paths.css.dest)
+export const minifyStyles = () => css.minify({
+  source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
+  destination: paths.css.dest
+})
 minifyStyles.description = 'Minifies all CSS files.'
 
 /**

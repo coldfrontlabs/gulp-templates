@@ -16,7 +16,9 @@ const paths = {
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScripts = () => js.lint(`${paths.js.src}/${paths.js.selector}`)
+const lintScripts = () => js.lint({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScripts.description = 'Lints all JS files.'
 
 /**
@@ -24,7 +26,9 @@ lintScripts.description = 'Lints all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const lintScriptsFix = () => js.fix(`${paths.js.src}/${paths.js.selector}`)
+const lintScriptsFix = () => js.fix({
+  source: `${paths.js.src}/${paths.js.selector}`
+})
 lintScriptsFix.description = 'Lints and fixes all JS files.'
 
 /**
@@ -32,7 +36,10 @@ lintScriptsFix.description = 'Lints and fixes all JS files.'
  *
  * @returns {Object} - Gulp stream.
  */
-const compileScripts = () => js.compile(`${paths.js.src}/${paths.js.selector}`, paths.js.dest)
+const compileScripts = () => js.compile({
+  source: `${paths.js.src}/${paths.js.selector}`,
+  destination: paths.js.dest
+})
 compileScripts.description = 'Compiles all JS files using Babel.'
 
 /**
@@ -40,7 +47,10 @@ compileScripts.description = 'Compiles all JS files using Babel.'
  *
  * @returns {Object} - Gulp stream.
  */
-const minifyScripts = () => js.minify([`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`], paths.js.dest)
+const minifyScripts = () => js.minify({
+  source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
+  destination: paths.js.dest
+})
 minifyScripts.description = 'Minifies all JS files.'
 
 /**
