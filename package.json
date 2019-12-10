@@ -4,10 +4,11 @@
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint --ext .js .",
-    "lint:fix": "npx eslint --ext .js . --fix",
     "commit": "npx git cz",
-    "release": "standard-version"
+    "lint": "npx eslint --ext .js --ignore-path .gitignore .",
+    "fix": "npm run lint -- --fix",
+    "prerelease": "npm run lint",
+    "release": "npx standard-version"
   },
   "repository": {
     "type": "git",
@@ -27,120 +28,41 @@
   },
   "homepage": "https://github.com/coldfrontlabs/gulp-templates#readme",
   "dependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "~7.6.3",
-    "autoprefixer": "^9.7.0",
-    "cssnano": "~4.1.0",
-    "eslint": "^6.6.0",
-    "gulp-babel": "~8.0.0",
-    "gulp-clean-css": "~4.2.0",
-    "gulp-eslint": "~6.0.0",
-    "gulp-postcss": "~8.0.0",
-    "gulp-rename": "~1.4.0",
-    "gulp-sass": "~4.0.0",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "autoprefixer": "^9.7.3",
+    "cssnano": "^4.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.0",
     "gulp-stylelint": "^10.0.0",
     "gulp-uglify-es": "^2.0.0",
-    "postcss": "^7.0.21",
-    "postcss-discard-comments": "~4.0.0",
-    "stylelint": "^11.1.1"
+    "postcss": "^7.0.24",
+    "postcss-discard-comments": "^4.0.0",
+    "stylelint": "^12.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "~8.2.0",
-    "@commitlint/config-conventional": "~8.2.0",
-    "commitizen": "~4.0.3",
-    "cz-conventional-changelog": "~3.0.0",
-    "gulp": "~4.0.0",
-    "husky": "^3.0.9",
-    "standard-version": "~7.0.0"
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "commitizen": "^4.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsdoc": "^18.4.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "gulp": "^4.0.0",
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "standard-version": "^7.1.0"
   },
   "peerDependencies": {
-    "gulp": ">= 4.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended"
-    ],
-    "env": {
-      "es6": "true",
-      "node": "true"
-    },
-    "parserOptions": {
-      "sourceType": "module"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "echo committing as $(git config user.name) && npm run lint"
-    }
-  },
-  "standard-version": {
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features",
-        "hidden": false
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes",
-        "hidden": false
-      },
-      {
-        "type": "perf",
-        "section": "Performance Improvements",
-        "hidden": false
-      },
-      {
-        "type": "revert",
-        "section": "Reverts",
-        "hidden": false
-      },
-      {
-        "type": "docs",
-        "section": "Documentation",
-        "hidden": false
-      },
-      {
-        "type": "style",
-        "section": "Styles",
-        "hidden": true
-      },
-      {
-        "type": "chore",
-        "section": "Miscellaneous Chores",
-        "hidden": true
-      },
-      {
-        "type": "refactor",
-        "section": "Code Refactoring",
-        "hidden": false
-      },
-      {
-        "type": "test",
-        "section": "Tests",
-        "hidden": true
-      },
-      {
-        "type": "build",
-        "section": "Build System",
-        "hidden": false
-      },
-      {
-        "type": "ci",
-        "section": "Continuous Integration",
-        "hidden": false
-      }
-    ]
+    "gulp": "^4.0.0"
   }
 }
