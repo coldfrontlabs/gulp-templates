@@ -1,5 +1,6 @@
 module.exports = {
-  types: [{
+  types: [
+    {
       type: "feat",
       section: "Features",
       hidden: false
@@ -55,4 +56,4 @@ module.exports = {
       hidden: false
     }
   ]
-}
+};
