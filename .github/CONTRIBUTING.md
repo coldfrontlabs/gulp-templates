@@ -1,6 +1,6 @@
 # Contributing to @coldfrontlabs/gulp-templates
 
-Whether you want to add a new template or simply report a bug or issue, please have a quick read through these guidelines before contributing.
+Whether you want to add a feature or simply report a bug or issue, please have a quick read through these guidelines before contributing.
 
 ## Developed with Github
 
@@ -14,7 +14,7 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 
 1. Fork the repo and create your branch from dev.
 2. Link your pull request to any relavent open issues.
-3. If you've added or changed templates, update the documentation.
+3. If you've added or changed functionality, update the documentation.
 4. Make sure your code functions. Write a test if you have to!
 5. Make sure your code lints.
 6. Issue the pull request!
@@ -45,15 +45,44 @@ Everybody loves a thorough bug report!
 
 ## Keep Your Code Consistent
 
-- Use the standards provided by the lint file. Run `npm run lint` to be sure.
-- Keep all functional code in the `src/` directory.
-- All functions and variables accessible to users should be exported through `index.js`
+- Run `npm install` to ensure you have all the tools needed.
+- Use the coding standards provided.
+
+This project follows a set of coding standards combining [StandardJS](https://standardjs.com/), [Prettier](https://prettier.io/), and [JSDoc](https://jsdoc.app/).
+
+To check your code, you can use [ESLint](https://eslint.org/) with the provided script:
+
+```shell
+npm run lint
+```
+
+You can also fix some violations automatically using:
+
+```shell
+npm run fix
+```
+
+Code that does not follow the linting standards _will not_ be merged.
 
 ## Commit Guidelines
 
-We use an [Angular style](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits) for commit messages. Please make sure all commits follow this.
+This project uses the conventional commit standard, which means your commits should follow a basic template of:
 
-If you're unsure of how to format your messages, running `npm run commit` will give you a hand!
+> \<type>[optional scope]: \<description>
+>
+> [optional body]
+>
+> [optional footer(s)]
+
+For more detailed information about available types, scopes, breaking changes, etc. please see the [official documentation](https://www.conventionalcommits.org/en/v1.0.0/).
+
+This project also provides a command to assist you in formatting commit messages using [commitizen](https://commitizen.github.io/cz-cli/):
+
+```shell
+npm run commit
+```
+
+Commits that do not follow this format _will not_ be merged.
 
 ## References
 

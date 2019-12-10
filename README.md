@@ -1,7 +1,8 @@
 # @coldfrontlabs/gulp-templates
 
-[![NPM Version](https://img.shields.io/npm/v/@coldfrontlabs/gulp-templates.svg?style=for-the-badge)](https://www.npmjs.org/package/@coldfrontlabs/gulp-templates)
-[![License](https://img.shields.io/github/license/coldfrontlabs/gulp-templates.svg?style=for-the-badge)](/LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/coldfrontlabs/gulp-templates?include_prereleases&style=for-the-badge)](https://github.com/coldfrontlabs/gulp-templates/releases)
+[![License](https://img.shields.io/github/license/coldfrontlabs/gulp-templates?style=for-the-badge)](/LICENSE)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=for-the-badge)](https://conventionalcommits.org)
 
 Templates for quick gulp task set-up.
 
@@ -224,6 +225,12 @@ export default buildProd
 
 More examples can be found [here](/examples).
 
-## [Changelog](/CHANGELOG.md)
+## Versioning
 
-## [License](/LICENSE)
+This project uses Semantic Versioning 2.0.0 to keep track of releases.
+
+For more detailed information about SemVer, please see the [official documentation](https://semver.org/).
+
+## Contributing
+
+If you're interested in contributing to the project, please read the [Contribution Guidelines](.github/CONTRIBUTING.md). Any and all contributions _must_ follow these guidelines or they will not be accepted.
