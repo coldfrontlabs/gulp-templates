@@ -10,7 +10,8 @@ This project assumes users have a basic understanding of how Gulp works. If you 
 
 ## Installation
 
-```cmd
+```shell
+# latest stable
 npm install -D gulp
 npm install -D @coldfrontlabs/gulp-templates
 ```
