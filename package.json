@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Templates for quick gulp task set-up.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "src/"
+  ],
   "scripts": {
     "commit": "npx git cz",
     "lint": "npx eslint --ext .js --ignore-path .gitignore .",
