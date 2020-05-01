@@ -8,6 +8,7 @@
     "src/"
   ],
   "scripts": {
+    "preinstall": "npx npm-force-resolutions || true",
     "commit": "npx git cz",
     "lint": "npx eslint --ext .js --ignore-path .gitignore .",
     "fix": "npm run lint -- --fix",
@@ -74,5 +75,8 @@
   },
   "peerDependencies": {
     "gulp": "^4.0.0"
+  },
+  "resolutions": {
+    "yargs-parser": "^18.1.2"
   }
 }
