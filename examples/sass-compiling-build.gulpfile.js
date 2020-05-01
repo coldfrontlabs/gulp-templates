@@ -6,16 +6,16 @@ const paths = {
   css: {
     src: "dist/css",
     dest: "dist/css",
-    selector: "**/*.css"
+    selector: "**/*.css",
   },
   sass: {
     src: "src/scss",
     dest: "src/scss",
     selector: "**/*.scss",
     // Ignore specifically for Stylelint:fix bug.
-    ignore: ["!src/scss/ignored-code/**/*.scss"]
+    ignore: ["!src/scss/ignored-code/**/*.scss"],
   },
-  min: "**/*.min.*"
+  min: "**/*.min.*",
 };
 
 /**
@@ -25,7 +25,7 @@ const paths = {
  */
 const lintStyles = () =>
   sass.lint({
-    source: `${paths.sass.src}/${paths.sass.selector}`
+    source: `${paths.sass.src}/${paths.sass.selector}`,
   });
 lintStyles.description = "Lints all Sass files.";
 
@@ -36,7 +36,7 @@ lintStyles.description = "Lints all Sass files.";
  */
 const lintStylesFix = () =>
   sass.fix({
-    source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore]
+    source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore],
   });
 lintStylesFix.description = "Lints and fixes all Sass files.";
 
@@ -48,7 +48,7 @@ lintStylesFix.description = "Lints and fixes all Sass files.";
 const compileSass = () =>
   sass.compile({
     source: `${paths.sass.src}/${paths.sass.selector}`,
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 
 /**
@@ -59,7 +59,7 @@ const compileSass = () =>
 const compileCSS = () =>
   css.compile({
     source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 
 /**
@@ -78,7 +78,7 @@ compileStyles.description = "Compiles all Sass files and CSS files afterward.";
 const minifyStyles = () =>
   css.minify({
     source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 minifyStyles.description = "Minifies all CSS files.";
 

@@ -23,7 +23,7 @@ const css = {
   lint: ({ source, sourceOptions = {} }) => {
     return src(source, sourceOptions).pipe(
       stylelint({
-        reporters: [{ formatter: "verbose", console: true }]
+        reporters: [{ formatter: "verbose", console: true }],
       })
     );
   },
@@ -42,7 +42,7 @@ const css = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -53,7 +53,7 @@ const css = {
       .pipe(
         stylelint({
           reporters: [{ formatter: "verbose", console: true }],
-          fix: true
+          fix: true,
         })
       )
       .pipe(dest(destination, destinationOptions));
@@ -73,7 +73,7 @@ const css = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -99,7 +99,7 @@ const css = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -110,7 +110,7 @@ const css = {
       .pipe(postcss([cssnano(), comments()]))
       .pipe(rename({ extname: ".min.css" }))
       .pipe(dest(destination, destinationOptions));
-  }
+  },
 };
 
 module.exports = css;

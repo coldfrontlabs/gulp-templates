@@ -19,7 +19,7 @@ const sass = {
   lint: ({ source, sourceOptions = {} }) => {
     return src(source, sourceOptions).pipe(
       stylelint({
-        reporters: [{ formatter: "verbose", console: true }]
+        reporters: [{ formatter: "verbose", console: true }],
       })
     );
   },
@@ -38,7 +38,7 @@ const sass = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -49,7 +49,7 @@ const sass = {
       .pipe(
         stylelint({
           reporters: [{ formatter: "verbose", console: true }],
-          fix: true
+          fix: true,
         })
       )
       .pipe(dest(destination, destinationOptions));
@@ -69,7 +69,7 @@ const sass = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -79,7 +79,7 @@ const sass = {
     return src(source, sourceOptions)
       .pipe(gulpSass().on("error", gulpSass.logError))
       .pipe(dest(destination, destinationOptions));
-  }
+  },
 };
 
 module.exports = sass;

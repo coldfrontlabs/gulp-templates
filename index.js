@@ -7,5 +7,5 @@ module.exports = {
   css,
   js,
   lib,
-  sass
+  sass,
 };

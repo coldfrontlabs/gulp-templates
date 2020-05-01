@@ -39,7 +39,7 @@ const js = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -67,7 +67,7 @@ const js = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -93,7 +93,7 @@ const js = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     if (!destination) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -104,7 +104,7 @@ const js = {
       .pipe(rename({ extname: ".min.js" }))
       .pipe(uglifyEs())
       .pipe(dest(destination, destinationOptions));
-  }
+  },
 };
 
 module.exports = js;

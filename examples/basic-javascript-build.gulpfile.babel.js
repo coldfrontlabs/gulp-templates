@@ -6,9 +6,9 @@ const paths = {
   js: {
     src: "src/js",
     dest: "dist/js",
-    selector: "**/*.js"
+    selector: "**/*.js",
   },
-  min: "**/*.min.*"
+  min: "**/*.min.*",
 };
 
 /**
@@ -18,7 +18,7 @@ const paths = {
  */
 export const lintScripts = () =>
   js.lint({
-    source: `${paths.js.src}/${paths.js.selector}`
+    source: `${paths.js.src}/${paths.js.selector}`,
   });
 lintScripts.description = "Lints all JS files.";
 
@@ -29,7 +29,7 @@ lintScripts.description = "Lints all JS files.";
  */
 export const lintScriptsFix = () =>
   js.fix({
-    source: `${paths.js.src}/${paths.js.selector}`
+    source: `${paths.js.src}/${paths.js.selector}`,
   });
 lintScriptsFix.description = "Lints and fixes all JS files.";
 
@@ -41,7 +41,7 @@ lintScriptsFix.description = "Lints and fixes all JS files.";
 export const compileScripts = () =>
   js.compile({
     source: `${paths.js.src}/${paths.js.selector}`,
-    destination: paths.js.dest
+    destination: paths.js.dest,
   });
 compileScripts.description = "Compiles all JS files using Babel.";
 
@@ -53,7 +53,7 @@ compileScripts.description = "Compiles all JS files using Babel.";
 export const minifyScripts = () =>
   js.minify({
     source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
-    destination: paths.js.dest
+    destination: paths.js.dest,
   });
 minifyScripts.description = "Minifies all JS files.";
 

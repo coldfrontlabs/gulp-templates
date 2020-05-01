@@ -16,12 +16,12 @@ const lib = {
     source,
     destination,
     sourceOptions = {},
-    destinationOptions = {}
+    destinationOptions = {},
   }) => {
     return src(source, sourceOptions).pipe(
       dest(destination, destinationOptions)
     );
-  }
+  },
 };
 
 module.exports = lib;

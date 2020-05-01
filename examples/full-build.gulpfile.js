@@ -6,29 +6,29 @@ const paths = {
   css: {
     src: "dist/css",
     dest: "dist/css",
-    selector: "**/*.css"
+    selector: "**/*.css",
   },
   js: {
     src: "src/js",
     dest: "dist/js",
-    selector: "**/*.js"
+    selector: "**/*.js",
   },
   lib: {
     src: [
       "node_modules/package1/dist/package1.min.js",
       "node_modules/package2/dist/extras/package2-extra1.min.js",
-      "node_modules/package3/dist/package3.min.css"
+      "node_modules/package3/dist/package3.min.css",
     ],
-    dest: "dist/lib"
+    dest: "dist/lib",
   },
   sass: {
     src: "src/scss",
     dest: "src/scss",
     selector: "**/*.scss",
     // Ignore specifically for Stylelint:fix bug.
-    ignore: ["!src/scss/ignored-code/**/*.scss"]
+    ignore: ["!src/scss/ignored-code/**/*.scss"],
   },
-  min: "**/*.min.*"
+  min: "**/*.min.*",
 };
 
 /**
@@ -38,7 +38,7 @@ const paths = {
  */
 const lintStyles = () =>
   sass.lint({
-    source: `${paths.sass.src}/${paths.sass.selector}`
+    source: `${paths.sass.src}/${paths.sass.selector}`,
   });
 lintStyles.description = "Lints all Sass files.";
 
@@ -49,7 +49,7 @@ lintStyles.description = "Lints all Sass files.";
  */
 const lintScripts = () =>
   js.lint({
-    source: `${paths.js.src}/${paths.js.selector}`
+    source: `${paths.js.src}/${paths.js.selector}`,
   });
 lintScripts.description = "Lints all JS files.";
 
@@ -60,7 +60,7 @@ lintScripts.description = "Lints all JS files.";
  */
 const lintStylesFix = () =>
   sass.fix({
-    source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore]
+    source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore],
   });
 lintStylesFix.description = "Lints and fixes all Sass files.";
 
@@ -71,7 +71,7 @@ lintStylesFix.description = "Lints and fixes all Sass files.";
  */
 const lintScriptsFix = () =>
   js.fix({
-    source: `${paths.js.src}/${paths.js.selector}`
+    source: `${paths.js.src}/${paths.js.selector}`,
   });
 lintScriptsFix.description = "Lints and fixes all JS files.";
 
@@ -83,7 +83,7 @@ lintScriptsFix.description = "Lints and fixes all JS files.";
 const compileSass = () =>
   sass.compile({
     source: `${paths.sass.src}/${paths.sass.selector}`,
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 
 /**
@@ -94,7 +94,7 @@ const compileSass = () =>
 const compileCSS = () =>
   css.compile({
     source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 
 /**
@@ -113,7 +113,7 @@ compileStyles.description = "Compiles all Sass files and CSS files afterward.";
 const compileScripts = () =>
   js.compile({
     source: `${paths.js.src}/${paths.js.selector}`,
-    destination: paths.js.dest
+    destination: paths.js.dest,
   });
 compileScripts.description = "Compiles all JS files using Babel.";
 
@@ -125,7 +125,7 @@ compileScripts.description = "Compiles all JS files using Babel.";
 const minifyStyles = () =>
   css.minify({
     source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest
+    destination: paths.css.dest,
   });
 minifyStyles.description = "Minifies all CSS files.";
 
@@ -137,7 +137,7 @@ minifyStyles.description = "Minifies all CSS files.";
 const minifyScripts = () =>
   js.minify({
     source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
-    destination: paths.js.dest
+    destination: paths.js.dest,
   });
 minifyScripts.description = "Minifies all JS files.";
 
@@ -150,7 +150,7 @@ const fetchLibs = () =>
   lib.fetch({
     source: paths.lib.src,
     destination: paths.lib.dest,
-    sourceOptions: { base: "./node_modules/" }
+    sourceOptions: { base: "./node_modules/" },
   });
 fetchLibs.description = "Gathers all required libraries.";
 
