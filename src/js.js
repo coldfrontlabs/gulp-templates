@@ -12,9 +12,9 @@ const js = {
   /**
    * Runs eslint on a provided source.
    *
-   * @param   {object}              param0                      - The path options.
+   * @param   {object}            param0                      - The path options.
    * @param   {(string|string[])} param0.source               - The source path(s).
-   * @param   {object}              [param0.sourceOptions = {}] - Options for the source.
+   * @param   {object}            [param0.sourceOptions = {}] - Options for the source.
    *
    * @returns {object} - Gulp stream.
    */
@@ -27,21 +27,21 @@ const js = {
   /**
    * Runs eslint:fix on a provided source and outputs the result.
    *
-   * @param   {object}              param0                           - The path options.
+   * @param   {object}            param0                           - The path options.
    * @param   {(string|string[])} param0.source                    - The source path(s).
-   * @param   {string|null}       param0.destination               - The destination path.
-   * @param   {object}              [param0.sourceOptions = {}]      - Options for the source.
-   * @param   {object}              [param0.destinationOptions = {}] - Options for the destination.
+   * @param   {string|null}       [param0.destination = null]      - The destination path.
+   * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
+   * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
    *
    * @returns {object} - Gulp stream.
    */
   fix: ({
     source,
-    destination,
+    destination = null,
     sourceOptions = {},
     destinationOptions = {},
   }) => {
-    if (!destination) {
+    if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
@@ -55,21 +55,21 @@ const js = {
   /**
    * Runs babel on a provided source and outputs the result.
    *
-   * @param   {object}              param0                           - The path options.
+   * @param   {object}            param0                           - The path options.
    * @param   {(string|string[])} param0.source                    - The source path(s).
-   * @param   {string|null}       param0.destination               - The destination path.
-   * @param   {object}              [param0.sourceOptions = {}]      - Options for the source.
-   * @param   {object}              [param0.destinationOptions = {}] - Options for the destination.
+   * @param   {string|null}       [param0.destination = null]      - The destination path.
+   * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
+   * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
    *
    * @returns {object} - Gulp stream.
    */
   compile: ({
     source,
-    destination,
+    destination = null,
     sourceOptions = {},
     destinationOptions = {},
   }) => {
-    if (!destination) {
+    if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
@@ -81,21 +81,21 @@ const js = {
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {object}              param0                           - The path options.
+   * @param   {object}            param0                           - The path options.
    * @param   {(string|string[])} param0.source                    - The source path(s).
-   * @param   {string|null}       param0.destination               - The destination path.
-   * @param   {object}              [param0.sourceOptions = {}]      - Options for the source.
-   * @param   {object}              [param0.destinationOptions = {}] - Options for the destination.
+   * @param   {string|null}       [param0.destination = null]      - The destination path.
+   * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
+   * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
    *
    * @returns {object} - Gulp stream.
    */
   minify: ({
     source,
-    destination,
+    destination = null,
     sourceOptions = {},
     destinationOptions = {},
   }) => {
-    if (!destination) {
+    if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
