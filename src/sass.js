@@ -2,7 +2,7 @@
 const { src, dest } = require("gulp");
 
 // Include gulp plugins.
-const gulpSass = require("gulp-sass");
+const gulpSass = require("gulp-dart-sass");
 const stylelint = require("gulp-stylelint");
 
 // Declare base functions.
