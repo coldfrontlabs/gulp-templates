@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v2.0.0...v3.0.0) (2020-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **sass:** replacing node-sass with dart-sass will cause problems for projects relying on node-sass in some other way
+
+### Features
+
+* **sass:** replace node-sass with dart-sass ([2917390](https://github.com/coldfrontlabs/gulp-templates/commit/29173901abce8758e88da2fc4bc652b27a301d4c))
+
+
+### Performance Improvements
+
+* add default value to destination where applicable ([03436a0](https://github.com/coldfrontlabs/gulp-templates/commit/03436a049c699a16197f14508725a46e609d23da))
+
+
+### Documentation
+
+* **general:** update git docs ([07c6878](https://github.com/coldfrontlabs/gulp-templates/commit/07c6878cbfac71c0805834157c49cd01dc9f9aeb))
+* **general:** update install docs ([0aff6ad](https://github.com/coldfrontlabs/gulp-templates/commit/0aff6ad760099f151d958fb886e515877df904a8))
+
+
+### Build System
+
+* **deps-dev:** bump standard-version from 7.1.0 to 8.0.1 ([908728b](https://github.com/coldfrontlabs/gulp-templates/commit/908728b21e2d18ae2eea577be454c6d2920b363f))
+* **npm:** add resolution for yargs-parser ^18.1.2 ([5c9397d](https://github.com/coldfrontlabs/gulp-templates/commit/5c9397dc81228b72703165f3cbb2669b32bdfd50))
+* **npm:** dependency updates ([ec8c2d5](https://github.com/coldfrontlabs/gulp-templates/commit/ec8c2d56ae967396bc7a77f5eec909196adc489c))
+* **npm:** disallow .files from being packaged ([b531afb](https://github.com/coldfrontlabs/gulp-templates/commit/b531afb58bc3163efcac108197669c28653aa08f))
+* **npm:** fix commitizen setup ([1a3e1fc](https://github.com/coldfrontlabs/gulp-templates/commit/1a3e1fcda9833874c4e4a09f6e7fd8e068cec7d1))
+* **npm:** run security updates for commitlint and standard-version ([c9748a9](https://github.com/coldfrontlabs/gulp-templates/commit/c9748a945e4ff96ecd8332f56793d71122f9b184))
+* **npm:** update deps and config ([d714b21](https://github.com/coldfrontlabs/gulp-templates/commit/d714b211aaf70117f928011047032ebe774aebad))
+
 ## [2.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v2.0.0-alpha.0...v2.0.0) (2019-10-31)
 
 
