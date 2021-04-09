@@ -13,7 +13,8 @@
     "lint": "npx eslint --ext .js --ignore-path .gitignore .",
     "fix": "npm run lint -- --fix",
     "prerelease": "npm run fix",
-    "release": "git add src/. && git add index.js && npx standard-version -a"
+    "release": "git add src/. && git add index.js && npx standard-version -a",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -60,6 +61,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.3.1",
     "gulp": "4.0.2",
+    "husky": "^6.0.0",
     "prettier": "^2.2.1",
     "standard-version": "^9.2.0"
   },
