@@ -2,8 +2,11 @@
 const { src, dest } = require("gulp");
 
 // Include gulp plugins.
-const gulpSass = require("gulp-dart-sass");
+const dartSass = require("gulp-dart-sass");
 const stylelint = require("gulp-stylelint");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const sourcemaps = require("gulp-sourcemaps");
 
 // Declare base functions.
 const sass = {
@@ -70,15 +73,31 @@ const sass = {
     destination = null,
     sourceOptions = {},
     destinationOptions = {},
+    sourcemap = false,
+    sourcemapOptions = {},
   }) => {
     if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
 
-    return src(source, sourceOptions)
-      .pipe(gulpSass().on("error", gulpSass.logError))
-      .pipe(dest(destination, destinationOptions));
+    let stream = src(source, sourceOptions);
+
+    if (sourcemap) {
+      stream = stream
+        .pipe(sourcemaps.init(sourcemapOptions))
+        .pipe(dartSass().on("error", dartSass.logError))
+        .pipe(postcss([autoprefixer()]))
+        .pipe(sourcemaps.write());
+    } else {
+      stream = stream
+        .pipe(dartSass().on("error", dartSass.logError))
+        .pipe(postcss([autoprefixer()]));
+    }
+
+    stream = stream.pipe(dest(destination, destinationOptions));
+
+    return stream;
   },
 };
 

@@ -6,6 +6,7 @@ const babel = require("gulp-babel");
 const eslint = require("gulp-eslint");
 const terser = require("gulp-terser");
 const rename = require("gulp-rename");
+const sourcemaps = require("gulp-sourcemaps");
 
 // Declare base functions.
 const js = {
@@ -68,15 +69,28 @@ const js = {
     destination = null,
     sourceOptions = {},
     destinationOptions = {},
+    sourcemap = true,
+    sourcemapOptions = {},
   }) => {
     if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
 
-    return src(source, sourceOptions)
-      .pipe(babel())
-      .pipe(dest(destination, destinationOptions));
+    let stream = src(source, sourceOptions);
+
+    if (sourcemap) {
+      stream = stream
+        .pipe(sourcemaps.init(sourcemapOptions))
+        .pipe(babel())
+        .pipe(sourcemaps.write());
+    } else {
+      stream = stream.pipe(babel());
+    }
+
+    stream = stream.pipe(dest(destination, destinationOptions));
+
+    return stream;
   },
   /**
    * Minifies and renames a provided source and outputs the result.
@@ -94,16 +108,39 @@ const js = {
     destination = null,
     sourceOptions = {},
     destinationOptions = {},
+    sourcemap = false,
+    sourcemapOptions = {},
   }) => {
     if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
       destination = ".";
     }
 
-    return src(source, sourceOptions)
-      .pipe(rename({ extname: ".min.js" }))
-      .pipe(terser())
-      .pipe(dest(destination, destinationOptions));
+    let stream = src(source, sourceOptions);
+
+    if (sourcemap) {
+      stream = stream
+        .pipe(sourcemaps.init(sourcemapOptions))
+        .pipe(
+          rename(path => {
+            path.extname = ".min.js";
+          })
+        )
+        .pipe(terser())
+        .pipe(sourcemaps.write());
+    } else {
+      stream = stream
+        .pipe(
+          rename(path => {
+            path.extname = ".min.js";
+          })
+        )
+        .pipe(terser());
+    }
+
+    stream = stream.pipe(dest(destination, destinationOptions));
+
+    return stream;
   },
 };
 
