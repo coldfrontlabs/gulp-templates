@@ -12,8 +12,8 @@
     "commit": "npx git cz",
     "lint": "npx eslint --ext .js --ignore-path .gitignore .",
     "fix": "npm run lint -- --fix",
-    "prerelease": "npm run lint",
-    "release": "npx standard-version"
+    "prerelease": "npm run fix",
+    "release": "git add src/. && git add index.js && npx standard-version -a"
   },
   "repository": {
     "type": "git",
@@ -33,40 +33,35 @@
   },
   "homepage": "https://github.com/coldfrontlabs/gulp-templates#readme",
   "dependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
+    "@babel/core": "^7.13.15",
     "autoprefixer": "^10.2.5",
-    "cssnano": "^4.1.0",
+    "cssnano": "^4.1.11",
     "gulp-babel": "^8.0.0",
-    "gulp-clean-css": "^4.2.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-dart-sass": "^1.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-postcss": "^9.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-stylelint": "^13.0.0",
     "gulp-uglify-es": "^2.0.0",
-    "postcss": "^8.2.9",
-    "postcss-discard-comments": "^4.0.0",
-    "stylelint": "^13.7.0"
+    "postcss-discard-comments": "^4.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
-    "commitizen": "^4.2.1",
+    "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.23.0",
+    "eslint": "7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^32.3.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^5.0.0",
-    "gulp": "^4.0.0",
-    "husky": "^4.3.0",
-    "prettier": "^2.1.1",
-    "standard-version": "^9.0.0"
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "gulp": "4.0.2",
+    "prettier": "^2.2.1",
+    "standard-version": "^9.2.0"
   },
   "config": {
     "commitizen": {
@@ -74,7 +69,7 @@
     }
   },
   "peerDependencies": {
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.2"
   },
   "resolutions": {}
 }
