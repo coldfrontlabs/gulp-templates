@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo committing as $(git config user.name) && npm run lint
+echo committing as $(git config user.name)
+npm run lint
