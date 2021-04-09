@@ -4,7 +4,7 @@ const { src, dest } = require("gulp");
 // Include gulp plugins.
 const babel = require("gulp-babel");
 const eslint = require("gulp-eslint");
-const uglifyEs = require("gulp-uglify-es").default;
+const terser = require("gulp-terser");
 const rename = require("gulp-rename");
 
 // Declare base functions.
@@ -102,7 +102,7 @@ const js = {
 
     return src(source, sourceOptions)
       .pipe(rename({ extname: ".min.js" }))
-      .pipe(uglifyEs())
+      .pipe(terser())
       .pipe(dest(destination, destinationOptions));
   },
 };
