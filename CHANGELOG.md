@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-alpha.0](https://github.com/coldfrontlabs/gulp-templates/compare/v3.0.0...v4.0.0-alpha.0) (2021-04-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **npm:** Customizations requiring uglify-es functionality may break due to swap to terser
+
+### Features
+
+* add ability to generate sourcemaps ([cdebaaa](https://github.com/coldfrontlabs/gulp-templates/commit/cdebaaa91e60cce4f6bb0505754e29572a4dece4))
+
+
+### Build System
+
+* **husky:** upgrade husky to v6 ([2b67a63](https://github.com/coldfrontlabs/gulp-templates/commit/2b67a63a111a476f6cef1a2ac7bfc4ba4c81d88b))
+* **npm:** clean up dependency tree ([968afd2](https://github.com/coldfrontlabs/gulp-templates/commit/968afd2bc00c2c699d6a49d44c48120920b3a69d))
+* **npm:** replace uglify-es with terser ([1ded7ed](https://github.com/coldfrontlabs/gulp-templates/commit/1ded7ed4450beafb3fd792a0dcd9d7a226f75b57))
+* **npm:** update dependencies to latest ([8f41d69](https://github.com/coldfrontlabs/gulp-templates/commit/8f41d69f6f928136d1171566f4316dd4a8a64eb3))
+
 ## [3.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v2.0.0...v3.0.0) (2020-09-08)
 
 
