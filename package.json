@@ -8,12 +8,12 @@
     "src/"
   ],
   "scripts": {
-    "preinstall": "npx npm-force-resolutions || true",
-    "commit": "npx git cz",
-    "lint": "npx eslint --ext .js --ignore-path .gitignore .",
-    "fix": "npm run lint -- --fix",
-    "prerelease": "npm run fix",
-    "release": "git add src/. && git add index.js && npx standard-version -a",
+    "commit": "git cz",
+    "lint": "npm run eslint && npm run prettier",
+    "eslint": "eslint --ext .js --fix --ignore-path .gitignore .",
+    "prettier": "prettier '**/*.js' --write --ignore-path .gitignore",
+    "prerelease": "npm run lint",
+    "release": "git add src/. && git add index.js && standard-version -a",
     "prepare": "husky install"
   },
   "repository": {
@@ -60,7 +60,6 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^32.3.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-promise": "^4.3.1",
     "gulp": "4.0.2",
     "husky": "^6.0.0",
@@ -69,6 +68,5 @@
   },
   "peerDependencies": {
     "gulp": "^4.0.2"
-  },
-  "resolutions": {}
+  }
 }
