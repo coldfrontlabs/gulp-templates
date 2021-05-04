@@ -122,7 +122,7 @@ const js = {
       stream = stream
         .pipe(sourcemaps.init(sourcemapOptions))
         .pipe(
-          rename(path => {
+          rename((path) => {
             path.extname = ".min.js";
           })
         )
@@ -131,7 +131,7 @@ const js = {
     } else {
       stream = stream
         .pipe(
-          rename(path => {
+          rename((path) => {
             path.extname = ".min.js";
           })
         )
