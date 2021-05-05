@@ -2,13 +2,13 @@
 
 To gain access to the functions for libraries and dependencies, simply include the following in your `gulpfile.js`:
 
-```jsx
+```js
 const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
-```jsx
+```js
 const { lib } = require('@coldfrontlabs/gulp-templates')
 ```
 
@@ -18,13 +18,13 @@ All input/output paths used by these functions are the same as any other gulp ta
 
 ## Fetching
 
-```jsx
+```js
 template.lib.fetch({ source: 'input-path', destination: 'output-path' })
 ```
 
 or
 
-```jsx
+```js
 const params = {
   source: ['input-path-1', '!input-path-2', 'etc'],
   destination: 'output-path'
@@ -33,24 +33,15 @@ const params = {
 lib.fetch(params)
 ```
 
-The `fetch` function will simply fetch the provided path or array of paths and move them to the provided output directory.
+The `fetch` function will fetch the provided path or array of paths and move them to the provided output directory.
 
 ### Options
 
-| Name | Type | Default | Required | Description |
+All options must be passed within a single parameter object.
+
+| Name | Description | Type | Required | Default |
 | --- | --- | --- | --- | --- |
-| source | string or array of strings | null | true | The source path or paths. |
-| destination | string | null | true | The destination path. |
-| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
-| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
-
-**Important Note:** _All_ options must be passed within a single parameter object.
-
-```jsx
-{
-  source: '',
-  destination: '',
-  sourceOptions: {},
-  destinationOptions: {}
-}
-```
+| source | The source path or paths. | string or array of strings | true | `null` |
+| destination | The destination path. | string | true | `null` |
+| sourceOptions | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. | object | false | `{}` |
+| destinationOptions | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. | object | false | `{}` |

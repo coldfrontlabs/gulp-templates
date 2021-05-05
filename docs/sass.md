@@ -2,13 +2,13 @@
 
 To gain access to the functions for Sass/SCSS, simply include the following in your `gulpfile.js`:
 
-```jsx
+```js
 const template = require('@coldfrontlabs/gulp-templates')
 ```
 
 or
 
-```jsx
+```js
 const { sass } = require('@coldfrontlabs/gulp-templates')
 ```
 
@@ -18,13 +18,13 @@ All input/output paths used by these functions are the same as any other gulp ta
 
 ## Linting
 
-```jsx
+```js
 template.sass.lint({ source: 'input-path' })
 ```
 
 or
 
-```jsx
+```js
 const params = {
   source: ['input-path-1', '!input-path-2', 'etc']
 }
@@ -34,31 +34,24 @@ sass.lint(params)
 
 The `lint` function will run [Stylelint](https://github.com/stylelint/stylelint) on the provided path or array of paths and output the result to the console.
 
-### Options
+### Linting Options
 
-| Name | Type | Default | Required | Description |
+All options must be passed within a single parameter object.
+
+| Name | Description | Type | Required | Default |
 | --- | --- | --- | --- | --- |
-| source | string or array of strings | null | true | The source path or paths. |
-| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
-
-**Important Note:** _All_ options must be passed within a single parameter object.
-
-```jsx
-{
-  source: '',
-  sourceOptions: {}
-}
-```
+| source | The source path or paths. | string or array of strings | true | `null` |
+| sourceOptions | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. | object | false | `{}` |
 
 ## Fixing Linting Violations
 
-```jsx
+```js
 template.sass.fix({ source: 'input-path' })
 ```
 
 or
 
-```jsx
+```js
 const param = {
   source: ['input-path-1', '!input-path-2', 'etc'],
   destination: 'optional-output-path'
@@ -69,7 +62,7 @@ sass.fix(params)
 
 The `fix` function will run [Stylelint](https://github.com/stylelint/stylelint) on the provided path or array of paths and fix all errors that it can. It will then overwrite the existing files with the fixes, and output the violations it cannot fix to the console.
 
-If you do not want to overwrite your existing code, you can provide a destination path as a second parameter.
+If you do _not_ want to overwrite your existing code, you can provide a destination path as a second parameter.
 
 **Note:** Currently, gulp-stylelint does not respect .stylelintignore files while running the fix command and will overwrite "ignored" files with empty ones.
 
@@ -77,35 +70,26 @@ You can follow the [issue on GitHub](https://github.com/olegskl/gulp-stylelint/i
 
 As a workaround, it is recommended that you essentially duplicate your ignored files list using the gulp task itself. You can see how to implement this in the [examples provided](/examples) in this package.
 
-### Options
+### Fixing Options
 
-| Name | Type | Default | Required | Description |
+All options must be passed within a single parameter object.
+
+| Name | Description | Type | Required | Default |
 | --- | --- | --- | --- | --- |
-| source | string or array of strings | null | true | The source path or paths. |
-| destination | string | null | false | The destination path. Will default to "." if no path is provided. |
-| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
-| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
-
-**Important Note:** _All_ options must be passed within a single parameter object.
-
-```jsx
-{
-  source: '',
-  destination: '',
-  sourceOptions: {},
-  destinationOptions: {}
-}
-```
+| source | The source path or paths. | string or array of strings | true | `null` |
+| destination | The destination path. Will default to "." if no path is provided. | string | false | `null` |
+| sourceOptions | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. | object | false | `{}` |
+| destinationOptions | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. | object | false | `{}` |
 
 ## Compiling
 
-```jsx
+```js
 template.sass.compile({ source: 'input-path' })
 ```
 
 or
 
-```jsx
+```js
 const params = {
   source: ['input-path-1', '!input-path-2', 'etc'],
   destination: 'optional-output-path'
@@ -114,26 +98,21 @@ const params = {
 sass.compile(params)
 ```
 
-The `compile` function will run the Sass compiler (specifically [Node-Sass](https://github.com/sass/node-sass)) on the provided path or array of paths. It will then output the newly compiled CSS to the same directories as the source.
+The `compile` function will run the [Sass](https://www.npmjs.com/package/sass) compiler and [PostCSS](https://github.com/postcss/postcss) (specifically [Autoprefixer](https://github.com/postcss/autoprefixer)) on the provided path or array of paths. It will then output the newly compiled CSS to the same directories as the source.
 
-If you do not want to output the CSS files into their original directories, you can provide a destination path as a second parameter.
+If you do _not_ want to output the CSS files into their original directories, you can provide a destination path as a second parameter.
 
-### Options
+Sourcemaps can also be generated using [gulp-sourcemaps](https://github.com/gulp-sourcemaps/gulp-sourcemaps) by setting the `sourcemap` parameter to `true`.
 
-| Name | Type | Default | Required | Description |
+### Compiling Options
+
+All options must be passed within a single parameter object.
+
+| Name | Description | Type | Required | Default |
 | --- | --- | --- | --- | --- |
-| source | string or array of strings | null | true | The source path or paths. |
-| destination | string | null | false | The destination path. Will default to "." if no path is provided. |
-| sourceOptions | object | {} | false | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. |
-| destinationOptions | object | {} | false | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. |
-
-**Important Note:** _All_ options must be passed within a single parameter object.
-
-```jsx
-{
-  source: '',
-  destination: '',
-  sourceOptions: {},
-  destinationOptions: {}
-}
-```
+| source | The source path or paths. | string or array of strings | true | `null` |
+| destination | The destination path. Will default to "." if no path is provided. | string | false | `null` |
+| sourceOptions | Any options you want to pass to the source. See the [official documentation](https://gulpjs.com/docs/en/api/src#options) for more information. | object | false | `{}` |
+| destinationOptions | Any options you want to pass to the destination. See the [official documentation](https://gulpjs.com/docs/en/api/dest#options) for more information. | object | false | `{}` |
+| sourcemap | A toggle to generate sourcemaps. | boolean | false | `false` |
+| sourcemapOptions | Options for generating sourcemaps. See the [official documentation](https://github.com/gulp-sourcemaps/gulp-sourcemaps#usage) for more information | object | false | `{}` |

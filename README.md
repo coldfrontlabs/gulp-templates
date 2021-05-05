@@ -50,7 +50,7 @@ Check out the new [upgrade guide](docs/upgrading.md)!
 
 This file will give you a basic example of how to use the templates.
 
-```jsx
+```js
 // Get gulp components and templates.
 const { series } = require('gulp')
 const { js } = require('@coldfrontlabs/gulp-templates')
@@ -147,7 +147,7 @@ If you want to use the latest greatest JavaScript, follow the [setup instruction
 
 Here is the example from above written in ES2015.
 
-```jsx
+```js
 // Get gulp components and templates.
 import { series } from 'gulp'
 import { js } from '@coldfrontlabs/gulp-templates'

@@ -8,7 +8,7 @@ The big change from version 1 to 2 of gulp-templates is how we declare function 
 
 In version 1, all of the functions you could call look something like this:
 
-```jsx
+```js
 const js = {
   // ...
   compile: (source, destination, sourceOptions = {}, destinationOptions = {}) => {
@@ -20,13 +20,13 @@ const js = {
 
 And you would call them like so:
 
-```jsx
+```js
 js.compile('source-path', 'desintation-path', { sourceOptionOne: 'do something' }, { destinationOptionOne: 'do something' })
 ```
 
 In version 2, we've changed all parameters to be passed through a single object:
 
-```jsx
+```js
 const js = {
   // ...
   compile: ({ source, destination, sourceOptions = {}, destinationOptions = {} }) => {
@@ -38,7 +38,7 @@ const js = {
 
 So you'll need to change your function calls to reflect this:
 
-```jsx
+```js
 js.compile({
   source: 'source-path',
   destination: 'desintation-path',
@@ -49,7 +49,7 @@ js.compile({
 
 This change also allows you to pre-define parameters inside of a variable and pass it that way:
 
-```jsx
+```js
 const params = {
   source: 'source-path',
   destination: 'desintation-path',
