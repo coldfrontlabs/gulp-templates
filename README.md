@@ -42,7 +42,7 @@ npm install -D @coldfrontlabs/gulp-templates
 * [Fix](docs/sass.md#fixing-linting-violations)
 * [Compile](docs/sass.md#compiling)
 
-## Upgrading from version 1 to 2 or 3?
+## Upgrading from version 1.x?
 
 Check out the [upgrade guide](docs/upgrading.md)!
 
