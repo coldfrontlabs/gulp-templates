@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.0-alpha.0...v4.0.0) (2021-05-06)
+
+
+### Build System
+
+* **editor:** add specific editor config ([4ed00bf](https://github.com/coldfrontlabs/gulp-templates/commit/4ed00bf4ae61ed856cc67e637822c395eaddf4ea))
+* **npm:** implement lint-staged ([01e5371](https://github.com/coldfrontlabs/gulp-templates/commit/01e5371d0807c46bce4376278e61c56ae7c8354c))
+* **npm:** move commitizen config to its own file ([f97200e](https://github.com/coldfrontlabs/gulp-templates/commit/f97200e53fdbc6a8c05aa8aac4b13a986ac44c56))
+* **npm:** use prettier as stand-alone formatter ([316b5d6](https://github.com/coldfrontlabs/gulp-templates/commit/316b5d6326e1a494de1e53c8f883c6a51eddd0d8))
+* **prettier:** specifically declare prettier settings that are cared about ([bdc99f0](https://github.com/coldfrontlabs/gulp-templates/commit/bdc99f0000467baae64481548a3c85233a600674))
+
+
+### Documentation
+
+* updat example files ([640a12e](https://github.com/coldfrontlabs/gulp-templates/commit/640a12eba322e7f944824a6ce0f42605f82b4631))
+* update documentation to match to updates ([fae12ff](https://github.com/coldfrontlabs/gulp-templates/commit/fae12ff01a49c0ca85abcc62bd59cacddbacc29b))
+* update upgrading wording ([5c9abda](https://github.com/coldfrontlabs/gulp-templates/commit/5c9abda976f7824e575f6f4bd82da223b46448dc))
+* **jsdoc:** add description of sourcemap options ([e91f724](https://github.com/coldfrontlabs/gulp-templates/commit/e91f7247fec025672f20dbd5507d38205c8cfc39))
+
 ## [4.0.0-alpha.0](https://github.com/coldfrontlabs/gulp-templates/compare/v3.0.0...v4.0.0-alpha.0) (2021-04-09)
 
 
