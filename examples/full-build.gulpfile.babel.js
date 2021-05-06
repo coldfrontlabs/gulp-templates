@@ -1,201 +1,175 @@
-// Get gulp components and templates.
-import { series, parallel, watch } from "gulp";
+import { parallel, series, watch } from "gulp";
 import { css, js, lib, sass } from "@coldfrontlabs/gulp-templates";
 
 const paths = {
   css: {
-    src: "dist/css",
-    dest: "dist/css",
+    source: "dist/css",
+    destination: "dist/css",
     selector: "**/*.css",
   },
   js: {
-    src: "src/js",
-    dest: "dist/js",
+    source: "src/js",
+    destination: "dist/js",
     selector: "**/*.js",
   },
   lib: {
-    src: [
-      "node_modules/package1/dist/package1.min.js",
-      "node_modules/package2/dist/extras/package2-extra1.min.js",
-      "node_modules/package3/dist/package3.min.css",
+    source: [
+      "node_modules/awesome-package/dist/*",
+      "node_modules/another-awesome-package/dist/*",
     ],
-    dest: "dist/lib",
+    destination: "dist/lib",
   },
   sass: {
-    src: "src/scss",
-    dest: "src/scss",
-    selector: "**/*.scss",
-    // Ignore specifically for Stylelint:fix bug.
-    ignore: ["!src/scss/ignored-code/**/*.scss"],
+    source: "src/scss",
+    destination: "src/scss",
+    selector: "**/*.{sass,scss}",
   },
   min: "**/*.min.*",
+  map: "**/*.map",
 };
-
-/**
- * Lints all Sass files.
- *
- * @returns {object} - Gulp stream.
- */
-export const lintStyles = () =>
-  sass.lint({
-    source: `${paths.sass.src}/${paths.sass.selector}`,
-  });
-lintStyles.description = "Lints all Sass files.";
-
-/**
- * Lints all JS files.
- *
- * @returns {object} - Gulp stream.
- */
-export const lintScripts = () =>
-  js.lint({
-    source: `${paths.js.src}/${paths.js.selector}`,
-  });
-lintScripts.description = "Lints all JS files.";
-
-/**
- * Lints and fixes all Sass files.
- *
- * @returns {object} - Gulp stream.
- */
-export const lintStylesFix = () =>
-  sass.fix({
-    source: [`${paths.sass.src}/${paths.sass.selector}`, ...paths.sass.ignore],
-  });
-lintStylesFix.description = "Lints and fixes all Sass files.";
 
 /**
  * Lints and fixes all JS files.
  *
  * @returns {object} - Gulp stream.
  */
-export const lintScriptsFix = () =>
-  js.fix({
-    source: `${paths.js.src}/${paths.js.selector}`,
+export const lintScripts = () => {
+  const source = `${paths.js.source}/${paths.js.selector}`;
+
+  return js.fix({
+    source,
   });
-lintScriptsFix.description = "Lints and fixes all JS files.";
+};
+lintScripts.description = "Lints and fixes all JS files.";
 
 /**
- * Compiles all Sass files.
+ * Lints and fixes all Sass files.
  *
  * @returns {object} - Gulp stream.
  */
-const compileSass = () =>
-  sass.compile({
-    source: `${paths.sass.src}/${paths.sass.selector}`,
-    destination: paths.css.dest,
-  });
+export const lintStyles = () => {
+  const source = `${paths.sass.source}/${paths.sass.selector}`;
 
-/**
- * Compiles all CSS files.
- *
- * @returns {object} - Gulp stream.
- */
-const compileCSS = () =>
-  css.compile({
-    source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest,
+  return sass.fix({
+    source,
   });
-
-/**
- * Compiles all Sass files and CSS files afterward.
- *
- * @returns {object} - Gulp stream.
- */
-export const compileStyles = series(compileSass, compileCSS);
-compileStyles.description = "Compiles all Sass files and CSS files afterward.";
+};
+lintStyles.description = "Lints and fixes all Sass files.";
 
 /**
  * Compiles all JS files using Babel.
  *
  * @returns {object} - Gulp stream.
  */
-export const compileScripts = () =>
-  js.compile({
-    source: `${paths.js.src}/${paths.js.selector}`,
-    destination: paths.js.dest,
+export const compileScripts = () => {
+  const source = `${paths.js.source}/${paths.js.selector}`;
+  const { destination } = paths.js;
+
+  return js.compile({
+    source,
+    destination,
+    sourcemap: true,
   });
+};
 compileScripts.description = "Compiles all JS files using Babel.";
+
+/**
+ * Compiles all Sass files into CSS.
+ *
+ * @returns {object} - Gulp stream.
+ */
+export const compileStyles = () => {
+  const source = `${paths.js.source}/${paths.js.selector}`;
+  const { destination } = paths.css;
+
+  return sass.compile({
+    source,
+    destination,
+    sourcemap: true,
+  });
+};
+compileStyles.description = "Compiles all Sass files into CSS.";
+
+/**
+ * Minifies all compiled JS files.
+ *
+ * @returns {object} - Gulp stream.
+ */
+export const minifyScripts = () => {
+  const { destination } = paths.js;
+  const source = [
+    `${destination}/${paths.js.selector}`,
+    `!${paths.min}`,
+    `!${paths.map}`,
+  ];
+
+  return js.minify({
+    source,
+    destination,
+    sourcemap: true,
+    sourcemapOptions: { loadMaps: true },
+  });
+};
+minifyScripts.description = "Minifies all compiled JS files.";
 
 /**
  * Minifies all CSS files.
  *
  * @returns {object} - Gulp stream.
  */
-export const minifyStyles = () =>
-  css.minify({
-    source: [`${paths.css.src}/${paths.css.selector}`, `!${paths.min}`],
-    destination: paths.css.dest,
+export const minifyStyles = () => {
+  const source = [
+    `${paths.css.source}/${paths.css.selector}`,
+    `!${paths.min}`,
+    `!${paths.map}`,
+  ];
+  const { destination } = paths.css;
+
+  return css.minify({
+    source,
+    destination,
+    sourcemap: true,
+    sourcemapOptions: { loadMaps: true },
   });
+};
 minifyStyles.description = "Minifies all CSS files.";
 
 /**
- * Minifies all JS files.
+ * Fetches all required libraries and moves them into the dist directory.
  *
  * @returns {object} - Gulp stream.
  */
-export const minifyScripts = () =>
-  js.minify({
-    source: [`${paths.js.dest}/${paths.js.selector}`, `!${paths.min}`],
-    destination: paths.js.dest,
-  });
-minifyScripts.description = "Minifies all JS files.";
+export const fetchLibs = () => {
+  const { source, destination } = paths.lib;
 
-/**
- * Gathers all required libraries.
- *
- * @returns {object} - Gulp stream.
- */
-export const fetchLibs = () =>
-  lib.fetch({
-    source: paths.lib.src,
-    destination: paths.lib.dest,
-    sourceOptions: { base: "./node_modules/" },
+  return lib.fetch({
+    source,
+    destination,
   });
-fetchLibs.description = "Gathers all required libraries.";
+};
+fetchLibs.description =
+  "Fetches all required libraries and moves them into the dist directory.";
 
-/**
- * Lints, compiles, and minifies all Sass/CSS/JS files and gathers all libraries.
- *
- * @returns {object} - Gulp stream.
- */
-export const buildDev = parallel(
-  series(lintStyles, compileStyles, minifyStyles),
+const build = parallel(
   series(lintScripts, compileScripts, minifyScripts),
+  series(lintStyles, compileStyles, minifyStyles),
   fetchLibs
 );
-buildDev.description =
-  "Lints, compiles, and minifies all Sass/CSS/JS files and gathers all libraries.";
+build.description =
+  "Lints, fixes, compiles, and minifies all source files and fetches libraries.";
 
-/**
- * Compiles and minifies all Sass/CSS/JS files and gathers all libraries.
- *
- * @returns {object} - Gulp stream.
- */
-export const buildProd = parallel(
-  series(compileStyles, minifyStyles),
-  series(compileScripts, minifyScripts),
-  fetchLibs
-);
-buildProd.description =
-  "Compiles and minifies all Sass/CSS/JS files and gathers all libraries.";
-
-/**
- * Watches all Sass/JS files and lints, compiles, and minifies them.
- */
-function watchFiles() {
+const watchFiles = () => {
   watch(
-    `${paths.sass.src}/${paths.sass.selector}`,
-    series(lintStyles, compileStyles, minifyStyles)
-  );
-  watch(
-    `${paths.js.src}/${paths.js.selector}`,
+    `${paths.js.source}/${paths.js.selector}`,
     series(lintScripts, compileScripts, minifyScripts)
   );
-}
+  watch(
+    `${paths.sass.source}/${paths.sass.selector}`,
+    series(lintStyles, compileStyles, minifyStyles)
+  );
+};
 watchFiles.description =
-  "Watches all Sass/JS files and lints, compiles, and minifies them.";
+  "Watches all source files and lints, fixes, compiles and minifies them accordingly.";
 export { watchFiles as watch };
 
-// Create default tasks
-export default buildProd;
+export default build;

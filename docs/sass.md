@@ -68,7 +68,7 @@ If you do _not_ want to overwrite your existing code, you can provide a destinat
 
 You can follow the [issue on GitHub](https://github.com/olegskl/gulp-stylelint/issues/85)
 
-As a workaround, it is recommended that you essentially duplicate your ignored files list using the gulp task itself. You can see how to implement this in the [examples provided](/examples) in this package.
+As a workaround you can use node to read and output your .stylelintignore file as an array of blobs (see [provided example](/examples/sass-ignore.gulpfile.js)).
 
 ### Fixing Options
 
