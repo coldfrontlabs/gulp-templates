@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.0...v4.0.1) (2021-09-27)
+
+
+### Build System
+
+* **npm:** update cssnano and postcss-discard-comments to latest ([ccb588b](https://github.com/coldfrontlabs/gulp-templates/commit/ccb588be781c68f01bfe2b7256632d71d44f3558))
+* **npm:** update dependencies to latest ([f238208](https://github.com/coldfrontlabs/gulp-templates/commit/f23820839e2b735207a85c4d2d2fc20246d2253f))
+
 ## [4.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.0-alpha.0...v4.0.0) (2021-05-06)
 
 

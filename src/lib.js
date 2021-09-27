@@ -9,7 +9,6 @@ const lib = {
    * @param   {string}            param0.destination               - The destination path.
    * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
    * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
-   *
    * @returns {object} - Gulp stream.
    */
   fetch: ({

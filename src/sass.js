@@ -16,7 +16,6 @@ const sass = {
    * @param   {object}            param0                      - The path options.
    * @param   {string|string[]}   param0.source               - The source path(s).
    * @param   {object}            [param0.sourceOptions = {}] - Options for the source.
-   *
    * @returns {object} - Gulp stream.
    */
   lint: ({ source, sourceOptions = {} }) => {
@@ -34,7 +33,6 @@ const sass = {
    * @param   {string|null}       [param0.destination = null]      - The destination path.
    * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
    * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
-   *
    * @returns {object} - Gulp stream.
    */
   fix: ({
@@ -67,7 +65,6 @@ const sass = {
    * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
    * @param   {boolean}           [param0.sourcemap = false]       - A toggle to generate sourcemaps.
    * @param   {object}            [param0.sourcemapOptions = {}]   - Options for generating sourcemaps.
-   *
    * @returns {object} - Gulp stream.
    */
   compile: ({
