@@ -3,7 +3,7 @@ const { src, dest } = require("gulp");
 
 // Include gulp plugins.
 const babel = require("gulp-babel");
-const eslint = require("gulp-eslint");
+const eslint = require("gulp-eslint-new");
 const terser = require("gulp-terser");
 const rename = require("gulp-rename");
 const sourcemaps = require("gulp-sourcemaps");
