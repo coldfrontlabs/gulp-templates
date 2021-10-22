@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.1...v5.0.0) (2021-10-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **npm:** gulp-eslint-new uses eslint 8 instead of 6 which could cause some breaking changes
+in the linting process
+
+### Build System
+
+* **npm:** replace gulp-eslint with gulp-eslint-new ([52dd140](https://github.com/coldfrontlabs/gulp-templates/commit/52dd14011d8678582c848931d1bc92acd01a43f5))
+
 ### [4.0.1](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.0...v4.0.1) (2021-09-27)
 
 
