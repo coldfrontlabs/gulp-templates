@@ -94,13 +94,14 @@ const js = {
   /**
    * Minifies and renames a provided source and outputs the result.
    *
-   * @param   {object}            param0                           - The path options.
-   * @param   {string|string[]}   param0.source                    - The source path(s).
-   * @param   {string|null}       [param0.destination = null]      - The destination path.
-   * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
-   * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
-   * @param   {boolean}           [param0.sourcemap = false]       - A toggle to generate sourcemaps.
-   * @param   {object}            [param0.sourcemapOptions = {}]   - Options for generating sourcemaps.
+   * @param   {object}          param0                                            - The path options.
+   * @param   {string|string[]} param0.source                                     - The source path(s).
+   * @param   {string|null}     [param0.destination = null]                       - The destination path.
+   * @param   {object}          [param0.sourceOptions = {}]                       - Options for the source.
+   * @param   {object}          [param0.destinationOptions = {}]                  - Options for the destination.
+   * @param   {boolean}         [param0.sourcemap = false]                        - A toggle to generate sourcemaps.
+   * @param   {object}          [param0.sourcemapOptions = {}]                    - Options for generating sourcemaps.
+   * @param   {object}          [param0.minifyOptions = { reserved: ["Drupal"] }] - Options for minifying the source.
    * @returns {object} - Gulp stream.
    */
   minify: ({
@@ -110,6 +111,7 @@ const js = {
     destinationOptions = {},
     sourcemap = false,
     sourcemapOptions = {},
+    minifyOptions = { reserved: ["Drupal"] },
   }) => {
     if (destination === null) {
       if (!sourceOptions.base) sourceOptions.base = "./";
@@ -126,7 +128,7 @@ const js = {
             path.extname = ".min.js";
           })
         )
-        .pipe(terser())
+        .pipe(terser(minifyOptions))
         .pipe(sourcemaps.write());
     } else {
       stream = stream
@@ -135,7 +137,7 @@ const js = {
             path.extname = ".min.js";
           })
         )
-        .pipe(terser());
+        .pipe(terser(minifyOptions));
     }
 
     stream = stream.pipe(dest(destination, destinationOptions));
