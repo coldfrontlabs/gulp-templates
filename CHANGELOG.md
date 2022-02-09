@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/coldfrontlabs/gulp-templates/compare/v5.0.0...v5.1.0) (2022-02-09)
+
+
+### Features
+
+* **css:** add options for customizing minify ([1870c03](https://github.com/coldfrontlabs/gulp-templates/commit/1870c03c9030fe59ce33d70f064efbfd39647361))
+* **js:** add options for customizing minify ([954e048](https://github.com/coldfrontlabs/gulp-templates/commit/954e0484469119bee0942db948dc063a4b690e95))
+
+
+### Bug Fixes
+
+* **js:** correct minify mangle options ([b2a02ce](https://github.com/coldfrontlabs/gulp-templates/commit/b2a02ce84f2240a4059b4393e49373910cea6584))
+
 ## [5.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v4.0.1...v5.0.0) (2021-10-22)
 
 
