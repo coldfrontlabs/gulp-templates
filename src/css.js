@@ -130,7 +130,7 @@ const css = {
       stream = stream
         .pipe(sourcemaps.init(sourcemapOptions))
         .pipe(
-          rename((path) => {
+          rename(path => {
             path.extname = ".min.css";
           })
         )
@@ -139,7 +139,7 @@ const css = {
     } else {
       stream = stream
         .pipe(
-          rename((path) => {
+          rename(path => {
             path.extname = ".min.css";
           })
         )

@@ -18,9 +18,9 @@ const fixStyles = () => {
     stylelintIgnore = data
       .split("\n")
       .filter(
-        (line) => line !== "" && !line.startsWith("#") && !line.startsWith("!")
+        line => line !== "" && !line.startsWith("#") && !line.startsWith("!")
       )
-      .map((line) => `!${line}`);
+      .map(line => `!${line}`);
   } catch (error) {
     stylelintIgnore = [];
   }
