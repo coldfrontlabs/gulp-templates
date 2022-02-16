@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/coldfrontlabs/gulp-templates/compare/v5.1.0...v5.1.1) (2022-02-16)
+
+
+### Build System
+
+* **npm:** update dependencies ([8806cbb](https://github.com/coldfrontlabs/gulp-templates/commit/8806cbb209433a0c6f13155b4a9c008de8ba8ffd))
+* update lint config ([bcb673a](https://github.com/coldfrontlabs/gulp-templates/commit/bcb673a61b1c0316f1e63bd2ddcd0802e6bc7078))
+
 ## [5.1.0](https://github.com/coldfrontlabs/gulp-templates/compare/v5.0.0...v5.1.0) (2022-02-09)
 
 
