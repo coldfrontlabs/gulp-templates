@@ -13,9 +13,9 @@ const js = {
   /**
    * Runs eslint on a provided source.
    *
-   * @param   {object}            param0                      - The path options.
-   * @param   {string|string[]}   param0.source               - The source path(s).
-   * @param   {object}            [param0.sourceOptions = {}] - Options for the source.
+   * @param   {object}          param0                      - The path options.
+   * @param   {string|string[]} param0.source               - The source path(s).
+   * @param   {object}          [param0.sourceOptions = {}] - Options for the source.
    * @returns {object} - Gulp stream.
    */
   lint: ({ source, sourceOptions = {} }) => {
@@ -54,13 +54,13 @@ const js = {
   /**
    * Runs babel on a provided source and outputs the result.
    *
-   * @param   {object}            param0                           - The path options.
-   * @param   {string|string[]}   param0.source                    - The source path(s).
-   * @param   {string|null}       [param0.destination = null]      - The destination path.
-   * @param   {object}            [param0.sourceOptions = {}]      - Options for the source.
-   * @param   {object}            [param0.destinationOptions = {}] - Options for the destination.
-   * @param   {boolean}           [param0.sourcemap = false]       - A toggle to generate sourcemaps.
-   * @param   {object}            [param0.sourcemapOptions = {}]   - Options for generating sourcemaps.
+   * @param   {object}          param0                           - The path options.
+   * @param   {string|string[]} param0.source                    - The source path(s).
+   * @param   {string|null}     [param0.destination = null]      - The destination path.
+   * @param   {object}          [param0.sourceOptions = {}]      - Options for the source.
+   * @param   {object}          [param0.destinationOptions = {}] - Options for the destination.
+   * @param   {boolean}         [param0.sourcemap = false]       - A toggle to generate sourcemaps.
+   * @param   {object}          [param0.sourcemapOptions = {}]   - Options for generating sourcemaps.
    * @returns {object} - Gulp stream.
    */
   compile: ({
