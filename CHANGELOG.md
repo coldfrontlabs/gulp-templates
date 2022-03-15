@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/coldfrontlabs/gulp-templates/compare/v5.1.1...v6.0.0) (2022-03-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **lib:** lib.fetch will run a default rename function to change all @ symbols to _ in the
+directory path
+
+### Features
+
+* **lib:** add rename, default rename function, and rename customization to fetch ([dfc682a](https://github.com/coldfrontlabs/gulp-templates/commit/dfc682a495d5eff77650d2365ba6513fc3f25ff0))
+
+
+### Documentation
+
+* add security policy ([1634412](https://github.com/coldfrontlabs/gulp-templates/commit/16344129d02564406597edd29d8ec12cca0768a6))
+
+
+### Build System
+
+* add proper jsdoc config ([d580459](https://github.com/coldfrontlabs/gulp-templates/commit/d580459fbb0c5c1a7aac34ca40a040accece5149))
+* bump eslint-plugin-jsdoc from 37.9.7 to 38.0.3 ([a8b3398](https://github.com/coldfrontlabs/gulp-templates/commit/a8b33982b75abbfb4cd45b4988d5892f6e11271e))
+* **github:** add CodeQL workflow ([f019b1e](https://github.com/coldfrontlabs/gulp-templates/commit/f019b1e192975dc761bc121646a02cd9df1de8e9))
+* **github:** add dependabot ([00bfaba](https://github.com/coldfrontlabs/gulp-templates/commit/00bfaba6f87087d43f688cee222bed8f38c161b4))
+
 ### [5.1.1](https://github.com/coldfrontlabs/gulp-templates/compare/v5.1.0...v5.1.1) (2022-02-16)
 
 
