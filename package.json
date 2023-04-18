@@ -46,7 +46,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-stylelint": "^13.0.0",
     "gulp-terser": "^2.0.1",
-    "postcss-discard-comments": "^5.0.1"
+    "postcss-discard-comments": "^6.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
